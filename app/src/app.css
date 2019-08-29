@@ -1,0 +1,9 @@
+/*.md-warn{*/
+/*  margin: 8px 0px 0px 0px;*/
+/*}*/
+.content {
+    padding: 0!important;
+    min-height: calc(100% - 123px);
+    margin-top: 62px;
+    overflow: hidden;
+}

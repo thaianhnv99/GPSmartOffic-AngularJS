@@ -1,0 +1,55 @@
+<div class="row" ng-controller="TablecarController" ng-cloak>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title" style="float: left;"> TABLE LIST CAR </h4>
+                <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                        data-target="#exampleModalCenterinsert"
+                        style="float: right; margin: 10px 20px 0px 0px; font-size: unset;">ADD
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" style="text-align: center">No.</th>
+                            <th scope="col" style="text-align: center;">NUMBERPLATE</th>
+                            <th scope="col" style="width: 250px; text-align: center;">NAMECAR</th>
+                            <th scope="col" style="text-align: center;">YEAROFCAR</th>
+                            <th scope="col" style="text-align: center;">BRAND</th>
+                            <th scope="col" style="text-align: center;">HAVEINSURANCE</th>
+                            <th scope="col" style="text-align: center;">OPTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="carlist in car">
+                            <td style="text-align: center">{{$index + 1}}</td>
+                            <td style="text-align: center;">{{carlist.numberplate}}</td>
+                            <td style="text-align: center;"><a ng-click="onshowcardetail(carlist)" data-toggle="modal"
+                                                               data-target="#exampleModalCenter">{{carlist.namecar}}</a>
+                            </td>
+                            <td style="text-align: center;">{{carlist.yearofmanufacture}}</td>
+                            <td style="text-align: center;">{{carlist.brand}}</td>
+                            <td style="text-align: center;">{{carlist.havainsurance?'Đã đăng kí':'Chưa đăng kí'}}</td>
+                            <td style="text-align: center; width: 200px;">
+                                <a class="btn btn-default btn-outline-primary"
+                                   ng-click="onshoweditinfo(carlist.numberplate)"
+                                   ui-sref="editcarinfo({id: carlist.numberplate})"
+                                   style="margin: 0px 5px 5px;"><i
+                                        class="fa fa-edit"></i></a>
+                                <a class="btn btn-default btn-outline-danger"
+                                   ng-click="showConfirm(carlist.numberplate)" style="margin: 0px 5px 5px;"><i
+                                        class="fa fa-remove"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>{{status}}</p>
+                    <div tablecarshowinfo></div>
+                    <div tablecar-add></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

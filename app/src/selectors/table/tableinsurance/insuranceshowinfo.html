@@ -1,0 +1,90 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenterinsurancedetail" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterinsurancedetailTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 850px;">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterAddTitle">VIEW INSURANCE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="background-color: #f4f3ef;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-user">
+                                <div class="card-header">
+                                    <h5 class="card-title">View Insurance</h5>
+                                </div>
+                                <div class="card-body" ng-if="insuranceinfo">
+                                    <div class="row">
+                                        <!--                    <div class="col-md-4 pr-1">-->
+                                        <!--                      <div class="form-group">-->
+                                        <!--                        <label>ID INSURANCE</label>-->
+                                        <!--                        <input type="text" name="IDINSURANCE" class="form-control" placeholder="IDINSURANCE"-->
+                                        <!--                               #IdInsurance="ngModel"-->
+                                        <!--                               [(ngModel)]="datainsurance.IDINSURANCE" required>-->
+                                        <!--                        <div *ngIf="(IdInsurance.dirty || IdInsurance.touched) && IdInsurance.errors?.required"-->
+                                        <!--                             class="alert alert-danger">-->
+                                        <!--                          Id Insurance Car is required.-->
+                                        <!--                        </div>-->
+                                        <!--                      </div>-->
+                                        <!--                    </div>-->
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>NAME INSURANCE</label>
+                                                <input type="text" name="nameinsurance" class="form-control"
+                                                       placeholder="NAMEINSURANCE"
+                                                       ng-model="insuranceinfo.nameinsurance" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 pr-1">
+                                            <div class="form-group">
+                                                <label>PACKAGE TYPE</label>
+                                                <input type="text" name="packagetype" class="form-control"
+                                                       placeholder="PACKAGETYPE"
+                                                       ng-model="insuranceinfo.packagetype" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-1">
+                                            <div class="form-group">
+                                                <label>CAR TYPE</label>
+                                                <input type="text" name="cartype" class="form-control"
+                                                       placeholder="CARTYPE"
+                                                       ng-model="insuranceinfo.cartype" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pl-1">
+                                            <!--                      <div class="form-group">-->
+                                            <!--                        <label>Have Insurance</label>-->
+                                            <!--                        <input type="text" name="HAVEINSURANCE" class="form-control" placeholder="Have Insurance"-->
+                                            <!--                               #HaveInsurance="ngModel"-->
+                                            <!--                               [(ngModel)]="datainsurance.HAVEINSURANCE" required>-->
+                                            <!--                        <div *ngIf="(HaveInsurance.dirty || HaveInsurance.touched) && HaveInsurance.errors?.required"-->
+                                            <!--                             class="alert alert-danger">-->
+                                            <!--                          Have Insurance is required.-->
+                                            <!--                        </div>-->
+                                            <!--                      </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>About Me</label>
+                                                <textarea class="form-control textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
