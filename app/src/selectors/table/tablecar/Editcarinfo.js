@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('myApp')
+    .module('myApp.editcarinfo', [])
     .controller('EditcarinfoController', ['$scope', '$http', 'dataCarFactory', '$location', '$stateParams', function ($scope, $http, dataCarFactory, $location, $stateParams) {
         $scope.CarInfo = {};
 

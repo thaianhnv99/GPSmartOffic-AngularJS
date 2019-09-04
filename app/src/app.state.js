@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('myApp')
+    .module('myApp.state', [])
     .config(stateConfig);
 stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -9,48 +9,22 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state({
             name: 'dashboard',
-            url: '',
+            url: '/',
             templateUrl: 'selectors/dashboard/dashboard.html'
-        })
-        .state({
-            name: 'homenews',
-            url: '/homenews',
-            templateUrl: 'selectors/News/HomeNews.html',
-            controller: 'HomenewsController'
         })
         .state({
             name: 'tablenews',
             url: '/tablenews',
-            data: {
-                role: ['ADMIN']
-            },
-            templateUrl: 'selectors/table/tablenews/tablenews.html'
+            templateUrl: 'selectors/table/tablenews/tablenews.html',
+            controller: 'TablenewsController'
         })
         .state({
             name: 'editcarinfo',
             url: '/editcarinfo/:id',
             templateUrl: 'selectors/table/tablecar/Editcarinfo.html',
             controller: 'EditcarinfoController'
-        })
-        .state({
-            name: 'permission',
-            url: '/permission',
-            templateUrl: 'selectors/permissions/tablepermission.html',
-            controller: 'TablepermissionController'
-        })
-        .state('access-denied', {
-            url: '/access-denied',
-            templateUrl: 'selectors/access-denied/access-denied.html',
-            controller: 'AccessdeniedController'
-
-        })
-        .state('page-not-found', {
-            url: '/page-not-found',
-            templateUrl: 'selectors/page-not-found/page-not-found.html',
-            controller: 'PagenotfoundController'
-
         });
-    $urlRouterProvider.otherwise('/page-not-found');
+    $urlRouterProvider.otherwise('/');
 }
 
 // .when('/tablecar', {
