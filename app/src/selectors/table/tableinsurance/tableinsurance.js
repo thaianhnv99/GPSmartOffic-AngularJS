@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('myApp.tableinsurance', ['ngMaterial'])
+    .module('myApp')
     .controller('TableinsuranceController', ['$scope', '$http', 'dataInsuranceFactory', '$mdDialog', function ($scope, $http, dataInsuranceFactory, $mdDialog) {
         $scope.insurance = {};
         $scope.insuranceinfo = {};
