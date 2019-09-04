@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="selectors/login/login.css">
+<script type="text/ng-template" id="tabDialog.tmpl.html">
+    <md-dialog class="fullscreen-dialog">
+<!--        <form>-->
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>WELCOME, SMART OFFICE</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <md-icon class="fa fa-times fa-2x"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content style="width: 45%;margin: 0 auto;">
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="Login">
+                        <md-content class="md-padding">
+                            <h1 class="md-display-2" style="text-align: center;">Login</h1>
+                            <form ng-submit="login()" ng-controller="LoginController">
+                                <div class="form-group">
+                                    <label for="exampleInputusernamel1">Username</label>
+                                    <input type="text" class="form-control" id="exampleInputusernamel1"
+                                           aria-describedby="emailHelp" placeholder="Enter username"
+                                    ng-model="formuser.username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1"
+                                           placeholder="Password" ng-model="formuser.password">
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+                            </form>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Registration">
+                        <md-content class="md-padding">
+                            <h1 class="md-display-2" style="text-align: center;">Registration</h1>
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail2">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail2"
+                                           aria-describedby="emailHelp" placeholder="Enter email">
+                                    <small id="emailHelp1" class="form-text text-muted">We'll never share your email
+                                        with anyone else.
+                                    </small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword2"
+                                           placeholder="Password">
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </md-dialog-content>
+<!--        </form>-->
+    </md-dialog>
+</script>

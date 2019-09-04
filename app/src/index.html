@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,8 +30,10 @@
     <link rel="stylesheet" href="assets/css/demo.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.9/angular-material.min.css">
 </head>
-<body>
+<body ng-app="myApp">
 <div class="wrapper">
+    <div showformlogin></div>
+    <!--header-->
     <div class="main-header">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="blue">
@@ -295,7 +290,13 @@
                                     <a class="dropdown-item" href="#">My Balance</a>
                                     <a class="dropdown-item" href="#">Inbox</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Account Setting</a>
+                                    <a class="dropdown-item" ui-sref="login">Account Setting</a>
+                                    <div ng-controller="LoginController" class="md-padding dialogdemoBasicUsage"
+                                         id="popupContainer" ng-cloak="">
+                                        <md-button class="md-primary md-raised" ng-click="showTabDialog($event)">
+                                            Login/Registration
+                                        </md-button>
+                                    </div>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Logout</a>
                                 </li>
@@ -361,7 +362,7 @@
                         <h4 class="text-section">Components</h4>
                     </li>
                     <li class="nav-item" ui-sref-active="active">
-                        <a data-toggle="collapse" href="#users">
+                        <a data-toggle="collapse" data-target="#users">
                             <i class="fas fa-layer-group"></i>
                             <p>Users</p>
                             <span class="caret"></span>
@@ -369,7 +370,7 @@
                         <div class="collapse" id="users">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="#">
+                                    <a data-target="#">
                                         <span class="sub-item">lever 1</span>
                                     </a>
                                 </li>
@@ -377,7 +378,7 @@
                         </div>
                     </li>
                     <li class="nav-item" ui-sref-active="active">
-                        <a data-toggle="collapse" href="#tables">
+                        <a data-toggle="collapse" data-target="#tables">
                             <i class="fas fa-table"></i>
                             <p>Tables</p>
                             <span class="caret"></span>
@@ -408,23 +409,13 @@
                         </div>
                     </li>
                     <li class="nav-item" ui-sref-active="active">
-                        <a data-toggle="collapse" href="#permission">
+                        <a data-toggle="collapse" ui-sref="permission">
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Permissions</p>
-                            <span class="caret"></span>
                         </a>
-                        <div class="collapse" id="permission">
-                            <ul class="nav nav-collapse">
-                                <li>
-                                    <a ui-sref="permission">
-                                        <span class="sub-item">Permission</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li class="nav-item" ui-sref-active="active">
-                        <a data-toggle="collapse" href="#logissuse">
+                        <a data-toggle="collapse" data-target="#logissuse">
                             <i class="far fa-chart-bar"></i>
                             <p>Log Issuse</p>
                             <span class="caret"></span>
@@ -440,7 +431,7 @@
                         </div>
                     </li>
                     <li class="nav-item" ui-sref-active="active">
-                        <a data-toggle="collapse" href="#timesheet">
+                        <a data-toggle="collapse" data-target="#timesheet">
                             <i class="fas fa-desktop"></i>
                             <p>Time Sheet</p>
                             <span class="caret"></span>
@@ -456,7 +447,7 @@
                         </div>
                     </li>
                     <li class="nav-item" ui-sref-active="active">
-                        <a data-toggle="collapse" href="#report">
+                        <a data-toggle="collapse" data-target="#report">
                             <i class="fas fa-bars"></i>
                             <p>Reports</p>
                             <span class="caret"></span>
@@ -517,28 +508,17 @@
 <script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
+<!-- Datatables -->
+<script src="assets/js/plugin/datatables/datatables.min.js"></script>
+
 <!-- jQuery Scrollbar -->
 <script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-
-
-<!-- Chart JS -->
-<script src="assets/js/plugin/chart.js/chart.min.js"></script>
 
 <!-- jQuery Sparkline -->
 <script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
-<!-- Chart Circle -->
-<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
-
-<!-- Datatables -->
-<script src="assets/js/plugin/datatables/datatables.min.js"></script>
-
 <!-- Bootstrap Notify -->
 <script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-
-<!-- jQuery Vector Maps -->
-<script src="assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-<script src="assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
 <!-- Sweet Alert -->
 <script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
@@ -549,11 +529,9 @@
 <!-- Atlantis DEMO methods, don't include it in your project! -->
 <script src="assets/js/setting-demo.js"></script>
 <script src="../../node_modules/angular/angular.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.7.8/angular-resource.min.js"></script>-->
 <script src="../../node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
 <!--<script src="../../node_modules/angular-loader/angular-loader.js"></script>-->
 <!--<script src="../../node_modules/angular-mocks/angular-mocks.js"></script>-->
-<script src="../../node_modules/oclazyload/dist/ocLazyLoad.js"></script>
 
 <script src="../core/version/version.js"></script>
 <script src="../core/version/version-directive.js"></script>
@@ -563,7 +541,16 @@
 <script src="app.js"></script>
 <script src="app.state.js"></script>
 
+<!--login-->
+<script src="selectors/login/login.js"></script>
+<script src="selectors/login/login.drct.js"></script>
+
+<!--home news-->
+<script src="selectors/News/HomeNews.js"></script>
+
 <!--Services-->
+<script src="services/userService.js"></script>
+<script src="services/AuthService.js"></script>
 <!--<script src="../src/services/carService.js"></script>-->
 <!--<script src="../src/services/insuranceService.js"></script>-->
 
@@ -573,8 +560,7 @@
 <!--<script src="selectors/table/tablecar/Insertcar.js"></script>-->
 
 <!--table news-->
-<script src="selectors/table/tablenews/abc.js"></script>
-<script src="selectors/table/tablenews/datatablenews.js"></script>
+
 <!--directive-->
 <!--<script src="selectors/table/tablecar/Insertcar.js"></script>-->
 
@@ -594,8 +580,13 @@
 <script src="selectors/table/tablecar/Editcarinfo.js"></script>
 <!--<script src="selectors/table/tablecar/Insertcar.js"></script>-->
 
+<!--permission-->
+<script src="services/permissionService.js"></script>
+<script src="selectors/permissions/tablepermission.js"></script>
 <!--directive-->
 <script src="selectors/table/tablecar/Insertcar.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>

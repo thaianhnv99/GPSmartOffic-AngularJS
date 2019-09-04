@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('myApp.Insertcar', [])
+    .module('myApp')
     .controller('InsertcarController', ['$scope', '$http', 'dataCarFactory', '$location', function ($scope, $http, dataCarFactory, $location) {
         $scope.carinsert = {};
         $scope.carshowinfo = {};
