@@ -2,9 +2,9 @@
 
 angular.module('myApp')
     .controller('LoginController', LoginController);
-LoginController.$inject = ['$http', '$scope', '$mdDialog', 'dataUserFactory', '$state', '$localStorage', 'AuthService'];
+LoginController.$inject = ['$http', '$scope', '$rootScope', '$mdDialog', 'dataUserFactory', '$state', '$localStorage'];
 
-function LoginController($http, $scope, $mdDialog, dataUserFactory, $state, $localStorage, AuthService) {
+function LoginController($http, $scope, $rootScope, $mdDialog, dataUserFactory, $state, $localStorage) {
     $scope.customFullscreen = true;
     $scope.formuser = {
         username: "",
@@ -20,11 +20,9 @@ function LoginController($http, $scope, $mdDialog, dataUserFactory, $state, $loc
                 if (response.data.token) {
                     alert("LoginSuccessful");
                     $localStorage.currentUser = {users: response.data.user, token: response.data.token};
-                    AuthService.user = response.data.user;
-                    console.log(AuthService.user);
-                    // $http.defaults.headers.common.Authorization = 'Bearer ' + response.data.token;
-                    // console.log($http.defaults.headers.common.Authorization);
-                    // console.log($localStorage.currentUser);
+                    console.log($localStorage.currentUser);
+                    // $rootScope.userslogin = $localStorage.currentUser;
+                    $rootScope.$broadcast('LoginSuccessful');
                     $state.go('homenews');
                 } else {
                     alert('Authetication Failed !');
@@ -64,4 +62,17 @@ function LoginController($http, $scope, $mdDialog, dataUserFactory, $state, $loc
             $mdDialog.hide(answer);
         };
     }
+    $scope.$on('LoginSuccessful', function () {
+        $rootScope.userslogin = $localStorage.currentUser;
+    });
+    $scope.$on('LogoutSuccessful', function () {
+        delete $localStorage.currentUser;
+        $rootScope.userslogin = "";
+        $http.defaults.headers.common.Authorization = "";
+    });
+    $scope.logout = function () {
+        console.log("LogoutSuccessful");
+        $rootScope.$broadcast('LogoutSuccessful');
+        $state.go('login');
+    };
 }

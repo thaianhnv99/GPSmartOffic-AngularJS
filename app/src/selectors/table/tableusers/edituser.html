@@ -1,0 +1,99 @@
+<div class="content" ng-controller="edituserController">
+    <div class="page-inner">
+        <div class="page-header">
+            <h4 class="page-title">TABLE USERS</h4>
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a ui-sref="login">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a>Tables</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a ui-sref="user">Table Users</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a ui-sref="edituser">Edit User</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Edit User</h4>
+                        </div>
+                    </div>
+                    <div class="card-body" ng-if="infouseredit">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card card-user">
+                                        <div class="image">
+                                            <img class="img-fluid" src="assets/img/damir-bosnjak.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>FullName</label>
+                                                <input type="text" class="form-control"
+                                                       placeholder="full name" ng-model="infouseredit.full_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group form-group-default">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control"
+                                                       placeholder="email" ng-value="infouseredit.email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-group-default">
+                                                <label>Activate</label>
+                                                <input type="text" class="form-control"
+                                                       placeholder="activate" ng-value="infouseredit.activated">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 pr-1">
+                                            <div class="form-group form-group-default">
+                                                <label>UserName</label>
+                                                <input type="text" class="form-control"
+                                                       placeholder="username" ng-value="infouseredit.user_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pl-1">
+                                            <div class="form-group form-group-default">
+                                                <label>Role</label>
+                                                <input type="text" class="form-control"
+                                                       placeholder="role" ng-value="infouseredit.name_role">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

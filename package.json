@@ -10,6 +10,7 @@
     "angular": "^1.7.5",
     "angular-loader": "^1.7.5",
     "angular-route": "^1.7.5",
+    "angular-utils-pagination": "^0.11.1",
     "html5-boilerplate": "0.0.1",
     "oclazyload": "^1.1.0"
   },

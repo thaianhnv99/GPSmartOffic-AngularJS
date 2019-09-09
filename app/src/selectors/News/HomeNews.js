@@ -3,16 +3,15 @@
 angular
     .module('myApp')
     .controller('HomenewsController', HomenewsController);
-HomenewsController.$inject = ['$http', '$scope', 'AuthService', '$localStorage', 'dataUserFactory'];
+HomenewsController.$inject = ['$http', '$scope', '$localStorage', 'dataUserFactory'];
 
-function HomenewsController($http, $scope, AuthService, $localStorage, dataUserFactory) {
-    $scope.userss = AuthService.user;
-    $scope.listuser = [];
-    console.log(AuthService.user);
-    if (AuthService.user) {
+function HomenewsController($http, $scope, $localStorage, dataUserFactory) {
+    if ($localStorage.currentUser) {
+        console.log($localStorage.currentUser);
+        $scope.userss = $localStorage.currentUser.users;
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
-        console.log($http.defaults.headers.common.Authorization);
     }
+    $scope.listuser = [];
     dataUserFactory.getlistuser()
         .then(function success(response) {
                 $scope.listuser = response.data;
