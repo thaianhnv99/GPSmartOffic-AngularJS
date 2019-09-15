@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('myApp.InsuranceServices', [])
+    .module('myApp', [])
     .config(['$provide', function ($provide) {
         $provide.factory('dataInsuranceFactory', ['$http', function ($http) {
             var dataInsuranceFactory = {

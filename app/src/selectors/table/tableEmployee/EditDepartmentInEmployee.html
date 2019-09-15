@@ -1,0 +1,23 @@
+<div class="modal-body">
+    <p class="small">Create a new row using this form, make sure you fill them all</p>
+    <form ng-submit="UpdateEmployee()">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label>Id</label>
+                    <input id="Id_department" type="text" class="form-control" placeholder="" ng-model="dataEmployee.id_employee">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group form-group-default">
+                    <label>full_name</label>
+                    <input id="Name_department" type="text" class="form-control" placeholder="" ng-model="dataEmployee.full_name">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer no-bd">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+    </form>
+</div>

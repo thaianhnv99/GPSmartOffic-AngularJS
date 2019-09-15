@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('myApp.state', [])
+    .module('myApp')
     .config(stateConfig);
 stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -13,17 +13,30 @@ function stateConfig($stateProvider, $urlRouterProvider) {
             templateUrl: 'selectors/dashboard/dashboard.html'
         })
         .state({
-            name: 'tablenews',
-            url: '/tablenews',
-            templateUrl: 'selectors/table/tablenews/tablenews.html',
-            controller: 'TablenewsController'
+            name: 'tabledepartment',
+            url: '/department',
+            templateUrl: 'selectors/table/tableDepartment/tableDepartment.html',
+            controller: 'DepartmentController'
         })
         .state({
-            name: 'editcarinfo',
-            url: '/editcarinfo/:id',
-            templateUrl: 'selectors/table/tablecar/Editcarinfo.html',
-            controller: 'EditcarinfoController'
+            name: 'tableeployee',
+            url: '/tableeployee',
+            templateUrl: 'selectors/table/tableEmployee/tableEmployee.html',
+            controller: 'EmployeeController'
+        })
+        .state({
+            name: 'Editemployee',
+            url: '/tableeployee/edit/:id',
+            templateUrl: 'selectors/table/tableEmployee/EditEmployee.html',
+            controller: 'EmployeeController'
+        })
+        .state({
+            name: 'ListEmployeeInDepartment',
+            url: '/tableeployee/display/:id',
+            templateUrl: 'selectors/table/tableDepartment/ListEmployeeInDepartment.html',
+            controller: 'DepartmentController'
         });
+
     $urlRouterProvider.otherwise('/');
 }
 

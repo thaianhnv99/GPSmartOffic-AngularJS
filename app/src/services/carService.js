@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('myApp.CarServices', [])
+    .module('myApp')
     .config(['$provide', function ($provide) {
         $provide.factory('dataCarFactory', ['$http', function ($http) {
             var dataCarFactory = {
