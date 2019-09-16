@@ -28,16 +28,12 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">Table User</h4>
-                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal"
-                                    data-target="#addRowModal">
-                                <i class="fa fa-plus"></i>
-                                Add User
-                            </button>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="add-row" class="display table table-striped table-hover">
+                            <table id="dtHorizontalVerticalExample" class="table table-hover" cellspacing="0"
+                                   width="100%">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -48,34 +44,20 @@
                                     </th>
                                     <th>Fullname</th>
                                     <th>Email</th>
-                                    <th>Namerole</th>
                                     <th>Block</th>
                                     <th style="width: 10%; text-align: center">Action</th>
                                 </tr>
                                 </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Images</th>
-                                    <th>Username</th>
-                                    <th>Fullname</th>
-                                    <th>Email</th>
-                                    <th>Namerole</th>
-                                    <th>Block</th>
-                                    <th style="text-align: center;">Action</th>
-                                </tr>
-                                </tfoot>
                                 <tbody>
-                                <tr dir-paginate="u in listuser|orderBy:sortBy:isASC|filter:search|itemsPerPage:2">
+                                <tr dir-paginate="u in listuser|orderBy:sortBy:isASC|filter:search|itemsPerPage:5">
                                     <td>{{$index+1}}</td>
-                                    <td>{{u.images}}</td>
+                                    <td><img class="img-fluid img-thumbnail" ng-src="http://localhost:8080/files/{{u.images}}"/></td>
                                     <td><a ng-click="selectinfouser(u)" data-toggle="modal"
                                            data-target="#showinfouserModal">{{u.user_name}}</a>
                                     </td>
-                                    <td>{{u.ful_name}}</td>
+                                    <td>{{u.first_name}} {{u.last_name}}</td>
                                     <td>{{u.email}}</td>
-                                    <td>{{u.name_role}}</td>
-                                    <td>{{u.block? 'locked': 'active'}}</td>
+                                    <td>{{u.block?'locked': 'active'}}</td>
                                     <td>
                                         <div class="form-button-action"><a ui-sref="edituser({id: u.user_name})">
                                             <button type="button" data-toggle="tooltip" title=""

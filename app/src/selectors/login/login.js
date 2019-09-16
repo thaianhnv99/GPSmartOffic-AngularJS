@@ -16,14 +16,22 @@ function LoginController($http, $scope, $rootScope, $mdDialog, dataUserFactory, 
         dataUserFactory.loaduserlogin($scope.formuser)
             .then(function success(response) {
                 $scope.password = "";
+                console.log(response.data);
                 console.log(response.data.token);
                 if (response.data.token) {
-                    alert("LoginSuccessful");
-                    $localStorage.currentUser = {users: response.data.user, token: response.data.token};
-                    console.log($localStorage.currentUser);
-                    // $rootScope.userslogin = $localStorage.currentUser;
-                    $rootScope.$broadcast('LoginSuccessful');
-                    $state.go('homenews');
+                    if (response.data.user.activated === true) {
+                        if (response.data.user.block === false) {
+                            alert("LoginSuccessful");
+                            $localStorage.currentUser = {users: response.data.user, token: response.data.token};
+                            console.log($localStorage.currentUser);
+                            $rootScope.$broadcast('LoginSuccessful');
+                            $state.go('homenews');
+                        } else {
+                            alert('The account has been locked !');
+                        }
+                    } else {
+                        alert('The account has not been activated !');
+                    }
                 } else {
                     alert('Authetication Failed !');
                 }
@@ -31,9 +39,6 @@ function LoginController($http, $scope, $rootScope, $mdDialog, dataUserFactory, 
                 alert('Authetication Failed !' + error)
             })
     };
-    // $scope.$onInit = function(){
-    //     $scope.showDialog();
-    // };
     $scope.showTabDialog = function (ev) {
         $mdDialog.show({
             controller: DialogController,
@@ -62,6 +67,7 @@ function LoginController($http, $scope, $rootScope, $mdDialog, dataUserFactory, 
             $mdDialog.hide(answer);
         };
     }
+
     $scope.$on('LoginSuccessful', function () {
         $rootScope.userslogin = $localStorage.currentUser;
     });

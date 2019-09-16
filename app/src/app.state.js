@@ -42,6 +42,22 @@ function stateConfig($stateProvider, $urlRouterProvider) {
         templateUrl: 'selectors/table/tableusers/edituser.html',
         controller: 'edituserController'
     }).state({
+        name: 'myprofile',
+        url: '/myprofile',
+        data: {
+            role: ['ADMIN']
+        },
+        templateUrl: 'selectors/table/tableusers/myprofile.html'
+        // controller: 'myuserController'
+    }).state({
+        name: 'editprofile',
+        url: '/editprofile',
+        data: {
+            role: ['ADMIN']
+        },
+        templateUrl: 'selectors/table/tableusers/editprofile.html',
+        controller: 'edituserprofileController'
+    }).state({
         name: 'tablenews',
         url: '/tablenews',
         data: {
@@ -60,15 +76,15 @@ function stateConfig($stateProvider, $urlRouterProvider) {
         controller: 'TablepermissionController'
     }).state('access-denied', {
         url: '/access-denied',
-        templateUrl: 'selectors/access-denied/access-denied.html',
-        controller: 'AccessdeniedController'
+        templateUrl: 'selectors/access-denied/access-denied.html'
+        // controller: 'AccessdeniedController'
 
     }).state('page-not-found', {
         url: '/page-not-found',
         templateUrl: 'selectors/page-not-found/page-not-found.html',
         controller: 'PagenotfoundController'
 
-    });
+    })
     $urlRouterProvider.otherwise('/page-not-found');
 }
 

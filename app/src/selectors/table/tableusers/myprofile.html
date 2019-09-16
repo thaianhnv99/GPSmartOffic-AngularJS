@@ -1,7 +1,7 @@
-<div class="content" ng-controller="edituserController">
+<div class="content" ng-controller="myuserController">
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">TABLE USERS</h4>
+            <h4 class="page-title">MY PROFILES</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a ui-sref="login">
@@ -12,19 +12,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a>Tables</a>
-                </li>
-                <li class="separator">
-                    <i class="flaticon-right-arrow"></i>
-                </li>
-                <li class="nav-item">
-                    <a ui-sref="user">Table Users</a>
-                </li>
-                <li class="separator">
-                    <i class="flaticon-right-arrow"></i>
-                </li>
-                <li class="nav-item">
-                    <a ui-sref="edituser">Edit User</a>
+                    <a>My Profiles</a>
                 </li>
             </ul>
         </div>
@@ -33,7 +21,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Edit User</h4>
+                            <h4 class="card-title">My User</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -101,18 +89,11 @@
                                         <div class="col-md-6 pl-1">
                                             <div class="form-group form-group-default">
                                                 <label>Role</label>
-                                                <div layout="row">
-                                                    <md-input-container>
-                                                        <md-select ng-model="roless" multiple>
-                                                            <md-optgroup label="ROLE">
-                                                                <md-option ng-value="r.id_role"
-                                                                           ng-repeat="r in listrole">
-                                                                    {{r.name_role}}
-                                                                </md-option>
-                                                            </md-optgroup>
-                                                        </md-select>
-                                                    </md-input-container>
-                                                </div>
+                                                <select multiple class="form-control" ng-value="infouseredit.name_role">
+                                                    <option>ADMIN</option>
+                                                    <option>MANAGER</option>
+                                                    <option>MEMBER</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -120,12 +101,7 @@
                             </div>
                             <div style="float: right;">
                                 <button type="button" class="btn btn-secondary" ui-sref="user">Back</button>
-                                <button ng-if="checkrole.user_name != infouseredit.user_name" type="submit"
-                                        class="btn btn-primary">Submit
-                                </button>
-                                <button ng-if="checkrole.user_name == infouseredit.user_name"
-                                        ng-click="saveedituserforadmin()" type="button" class="btn btn-primary">Submit
-                                </button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>

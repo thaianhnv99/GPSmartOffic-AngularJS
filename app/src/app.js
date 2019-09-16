@@ -20,6 +20,7 @@ function run($http, $state, $rootScope, $localStorage) {
             if (!$localStorage.currentUser) {
                 $state.go('login');
             } else {
+                // $scope.userlayout = $localStorage.currentUser.users;
                 if (toState.data && toState.data.role) {
                     var hasAccess = false;
                     console.log(toState.data.role);

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/atlantis.min.css">
     <link rel="stylesheet" href="app.css">
-
+    <link rel="stylesheet" href="fixscrolltable.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="assets/css/demo.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.9/angular-material.min.css">
@@ -249,28 +249,29 @@
                     <li ng-show="userslogin.users.user_name" class="nav-item dropdown hidden-caret">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" aria-expanded="false">
                             <div class="avatar-sm">
-                                <img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                                <img ng-src="http://localhost:8080/files/{{userslogin.users.images}}" alt="..."
+                                     class="avatar-img rounded-circle">
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-user animated fadeIn">
                             <div class="dropdown-user-scroll scrollbar-outer">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="assets/img/profile.jpg" alt="image profile"
-                                                                    class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img
+                                                ng-src="http://localhost:8080/files/{{userslogin.users.images}}"
+                                                alt="image profile"
+                                                class="avatar-img rounded"></div>
                                         <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@example.com</p><a href="profile.html"
-                                                                                          class="btn btn-xs btn-secondary btn-sm">View
+                                            <h4>{{userslogin.users.first_name}} {{userslogin.users.last_name}}</h4>
+                                            <p class="text-muted">{{userslogin.users.email}}</p><a ui-sref="myprofile"
+                                                                                                   class="btn btn-xs btn-secondary btn-sm">View
                                             Profile</a>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">My Profile</a>
-                                    <a class="dropdown-item" href="#">My Balance</a>
-                                    <a class="dropdown-item" href="#">Inbox</a>
+                                    <a class="dropdown-item" ui-sref="myprofile">My Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" ui-sref="login">Account Setting</a>
                                     <div class="dropdown-divider"></div>
@@ -298,13 +299,14 @@
             <div class="sidebar-content">
                 <div ng-show="userslogin.users.user_name" class="user">
                     <div class="avatar-sm float-left mr-2">
-                        <img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img ng-src="http://localhost:8080/files/{{userslogin.users.images}}" alt="..."
+                             class="avatar-img rounded-circle">
                     </div>
                     <div class="info">
                         <a data-toggle="collapse" data-target="#collapseExample" aria-expanded="true">
 								<span>
-									Hizrian
-									<span class="user-level">Administrator</span>
+									{{userslogin.users.first_name}} {{userslogin.users.last_name}}
+									<span class="user-level">{{userslogin.users.name_role}}</span>
 									<span class="caret"></span>
 								</span>
                         </a>
@@ -313,18 +315,13 @@
                         <div class="collapse in" id="collapseExample">
                             <ul class="nav">
                                 <li>
-                                    <a href="#profile">
+                                    <a ui-sref="myprofile">
                                         <span class="link-collapse">My Profile</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#edit">
+                                    <a ui-sref="editprofile">
                                         <span class="link-collapse">Edit Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#settings">
-                                        <span class="link-collapse">Settings</span>
                                     </a>
                                 </li>
                             </ul>
@@ -344,7 +341,7 @@
 							</span>
                         <h4 class="text-section">Components</h4>
                     </li>
-                    <li class="nav-item" ui-sref-active="active">
+                    <li ng-if="userslogin.users.name_role == 'ADMIN'||userslogin.users.name_role == 'MANAGER'" class="nav-item" ui-sref-active="active">
                         <a data-toggle="collapse" data-target="#users">
                             <i class="fas fa-layer-group"></i>
                             <p>Users</p>
@@ -512,6 +509,8 @@
 <!-- Atlantis DEMO methods, don't include it in your project! -->
 <script src="assets/js/setting-demo.js"></script>
 <script src="../../node_modules/angular/angular.js"></script>
+<script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>-->
 <script src="../../node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
 <script src="../../node_modules/angular-utils-pagination/dirPagination.js"></script>
 <!--<script src="../../node_modules/angular-loader/angular-loader.js"></script>-->
@@ -521,10 +520,19 @@
 <script src="../core/version/version-directive.js"></script>
 <script src="../core/version/interpolate-filter.js"></script>
 
+<script>
+    $(document).ready(function () {
+        $('#dtHorizontalVerticalExample').DataTable({
+            "scrollX": true,
+            "scrollY": 200,
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>
 <!-- CONTROLLERS -->
 <script src="app.js"></script>
 <script src="app.state.js"></script>
-
+<script src="directiveUpload.js"></script>
 <!--login-->
 <script src="selectors/login/login.js"></script>
 <script src="selectors/login/login.drct.js"></script>
@@ -535,6 +543,7 @@
 <!--user-->
 <script src="selectors/table/tableusers/user.js"></script>
 <script src="selectors/table/tableusers/edituser.js"></script>
+<script src="selectors/table/tableusers/edituserprofile.js"></script>
 <!--Services-->
 <script src="services/userService.js"></script>
 <!--<script src="../src/services/carService.js"></script>-->
@@ -558,6 +567,7 @@
 <!--<script src="services/show.fct.js"></script>-->
 <!-- / -->
 <!--Services-->
+<script src="services/UploadService.js"></script>
 <script src="../src/services/carService.js"></script>
 <!--<script src="../src/services/insuranceService.js"></script>-->
 

@@ -1,7 +1,7 @@
-<div class="content" ng-controller="edituserController">
+<div class="content" ng-controller="edituserprofileController">
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">TABLE USERS</h4>
+            <h4 class="page-title">MY USER</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a ui-sref="login">
@@ -12,19 +12,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a>Tables</a>
-                </li>
-                <li class="separator">
-                    <i class="flaticon-right-arrow"></i>
-                </li>
-                <li class="nav-item">
-                    <a ui-sref="user">Table Users</a>
-                </li>
-                <li class="separator">
-                    <i class="flaticon-right-arrow"></i>
-                </li>
-                <li class="nav-item">
-                    <a ui-sref="edituser">Edit User</a>
+                    <a>My Profiles</a>
                 </li>
             </ul>
         </div>
@@ -37,12 +25,12 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form ng-submit="saveedituser()">
+                        <form ng-submit="saveedituserforadminprofile()">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="card card-user">
                                         <div class="image">
-                                            <img class="img-fluid" ng-src="{{displayimages}}"/>
+                                            <img class="img-fluid" ng-src="{{displayimagesprofile}}"/>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -61,13 +49,13 @@
                                             <div class="form-group form-group-default">
                                                 <label>Email</label>
                                                 <input type="text" class="form-control"
-                                                       placeholder="email" ng-model="infouseredit.email">
+                                                       placeholder="email" ng-model="infousereditprofile.email">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group form-group-default">
                                                 <label>Block</label>
-                                                <select class="form-control" ng-model="infouseredit.block">
+                                                <select class="form-control" ng-model="infousereditprofile.block">
                                                     <option ng-value="true">Blocked</option>
                                                     <option ng-value="false">Active</option>
                                                 </select>
@@ -79,14 +67,15 @@
                                             <div class="form-group form-group-default">
                                                 <label>FirstName</label>
                                                 <input type="text" class="form-control"
-                                                       placeholder="first name" ng-model="infouseredit.first_name">
+                                                       placeholder="first name"
+                                                       ng-model="infousereditprofile.first_name">
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-1">
                                             <div class="form-group form-group-default">
                                                 <label>LastName</label>
                                                 <input type="text" class="form-control"
-                                                       placeholder="last name" ng-model="infouseredit.last_name">
+                                                       placeholder="last name" ng-model="infousereditprofile.last_name">
                                             </div>
                                         </div>
                                     </div>
@@ -95,23 +84,14 @@
                                             <div class="form-group form-group-default">
                                                 <label>UserName</label>
                                                 <input type="text" class="form-control"
-                                                       placeholder="username" ng-value="infouseredit.user_name">
+                                                       placeholder="username" ng-value="infousereditprofile.user_name">
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-1">
                                             <div class="form-group form-group-default">
                                                 <label>Role</label>
-                                                <div layout="row">
-                                                    <md-input-container>
-                                                        <md-select ng-model="roless" multiple>
-                                                            <md-optgroup label="ROLE">
-                                                                <md-option ng-value="r.id_role"
-                                                                           ng-repeat="r in listrole">
-                                                                    {{r.name_role}}
-                                                                </md-option>
-                                                            </md-optgroup>
-                                                        </md-select>
-                                                    </md-input-container>
+                                                <div ng-repeat="r in role">
+                                                    <label>{{r.id_role}}-{{r.name_role}}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -120,11 +100,8 @@
                             </div>
                             <div style="float: right;">
                                 <button type="button" class="btn btn-secondary" ui-sref="user">Back</button>
-                                <button ng-if="checkrole.user_name != infouseredit.user_name" type="submit"
+                                <button type="submit"
                                         class="btn btn-primary">Submit
-                                </button>
-                                <button ng-if="checkrole.user_name == infouseredit.user_name"
-                                        ng-click="saveedituserforadmin()" type="button" class="btn btn-primary">Submit
                                 </button>
                             </div>
                         </form>

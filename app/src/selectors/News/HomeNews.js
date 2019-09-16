@@ -3,9 +3,9 @@
 angular
     .module('myApp')
     .controller('HomenewsController', HomenewsController);
-HomenewsController.$inject = ['$http', '$scope', '$localStorage', 'dataUserFactory'];
+HomenewsController.$inject = ['$http', '$scope', '$localStorage', 'dataUserFactory', 'UploadFactory'];
 
-function HomenewsController($http, $scope, $localStorage, dataUserFactory) {
+function HomenewsController($http, $scope, $localStorage, dataUserFactory, UploadFactory) {
     if ($localStorage.currentUser) {
         console.log($localStorage.currentUser);
         $scope.userss = $localStorage.currentUser.users;
@@ -19,5 +19,5 @@ function HomenewsController($http, $scope, $localStorage, dataUserFactory) {
             },
             function error(error) {
                 console.log(error);
-            })
+            });
 }
