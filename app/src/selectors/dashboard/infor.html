@@ -1,0 +1,61 @@
+<script src="selectors/dashboard/dashboard.ctrl.js" xmlns="http://www.w3.org/1999/html"></script>
+<div class="content" id="exampleModalnew"  ng-controller="Shownew">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
+                    <h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
+                </div>
+                <div class="ml-md-auto py-2 py-md-0">
+                    <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
+                    <a href="#" class="btn btn-secondary btn-round">Add Customer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-inner mt--5">
+        <div class="row mt--2">
+            <div class="col-md-12">
+                <div class="card full-height">
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="table-responsive" ng-if="NewInfo1">
+                               <div class="row" style="text-align:justify; width: 900px">
+                                   <div class="col-md-12" style="margin-left: 20px">
+                                        <h2>{{NewInfo1.title}}</h2>
+                                        <i style="font-size: 10px">{{NewInfo1.date | date:'MM/dd/yyyy hh:mm' }}</i></br></br>
+                                       <div class="td-post-sharing td-post-sharing-top td-with-like">
+                                           <div class="td-default-sharing">
+                                               <div><a class="td-social-sharing-buttons td-social-facebook" href="http://www.facebook.com/sharer.php?http://localhost:63342/GPSmartOffice-AngularJS-master/app/src/index.html?_ijt=63a96l1t58v7r3d08q01rp0g61#!/"
+                                                  onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;" data-wpel-link="external" target="_new" rel="nofollow external noopener noreferrer">
+                                                   <i class="td-icon-facebook"></i><div class="td-social-but-text">Chia sẻ Facebook</div></a></div>
+                                               <a class="td-social-sharing-buttons td-social-twitter" href="https://twitter.com/intent/tweet?text=Google+thay+%C4%91%E1%BB%95i+thu%E1%BA%ADt+to%C3%A1n+t%C3%ACm+ki%E1%BA%BFm+tin+t%E1%BB%A9c%2C+%C6%B0u+ti%C3%AAn+n%E1%BB%99i+dung+g%E1%BB%91c&amp;url=https%3A%2F%2Ftechtalk.vn%2Fgoogle-thay-doi-thuat-toan-tim-kiem-tin-tuc-uu-tien-noi-dung-goc.html&amp;via=Tech+Talk"
+                                                  data-wpel-link="external" target="_new" rel="nofollow external noopener noreferrer">
+                                                   <i class="td-icon-twitter"></i><div class="td-social-but-text">Tweet</div></a>
+                                               <a class="td-social-sharing-buttons td-social-google" href="http://plus.google.com/share?url=https://techtalk.vn/google-thay-doi-thuat-toan-tim-kiem-tin-tuc-uu-tien-noi-dung-goc.html"
+                                                  onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;" data-wpel-link="internal"><i class="td-icon-googleplus"></i></a>
+                                               <a class="td-social-sharing-buttons td-social-pinterest" href="http://pinterest.com/pin/create/button/?url=https://techtalk.vn/google-thay-doi-thuat-toan-tim-kiem-tin-tuc-uu-tien-noi-dung-goc.html&amp;media=https://techtalk.vn/wp-content/uploads/2019/09/p1-14.jpg&amp;description=Google+thay+%C4%91%E1%BB%95i+thu%E1%BA%ADt+to%C3%A1n+t%C3%ACm+ki%E1%BA%BFm+tin+t%E1%BB%A9c%2C+%C6%B0u+ti%C3%AAn+n%E1%BB%99i+dung+g%E1%BB%91c"
+                                                  onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;" data-wpel-link="internal"><i class="td-icon-pinterest"></i></a>
+                                               <a class="td-social-sharing-buttons td-social-whatsapp" href="whatsapp://send?text=Google+thay+%C4%91%E1%BB%95i+thu%E1%BA%ADt+to%C3%A1n+t%C3%ACm+ki%E1%BA%BFm+tin+t%E1%BB%A9c%2C+%C6%B0u+ti%C3%AAn+n%E1%BB%99i+dung+g%E1%BB%91c%20-%20https%3A%2F%2Ftechtalk.vn%2Fgoogle-thay-doi-thuat-toan-tim-kiem-tin-tuc-uu-tien-noi-dung-goc.html"
+                                                  data-wpel-link="internal"><i class="td-icon-whatsapp"></i></a>
+                                           </div>
+                                           <div class="td-classic-sharing"><ul><li class="td-classic-facebook"><iframe frameborder="0" src="https://www.facebook.com/plugins/like.php?href=https://techtalk.vn/google-thay-doi-thuat-toan-tim-kiem-tin-tuc-uu-tien-noi-dung-goc.html&amp;layout=button_count&amp;show_faces=false&amp;width=105&amp;action=like&amp;colorscheme=light&amp;height=21" style="border:none; overflow:hidden; width:105px; height:21px; background-color:transparent;"></iframe>
+                                                </li><li class="td-classic-twitter"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="https://platform.twitter.com/widgets/tweet_button.d9084ca5af1ffbe01c8d444cfadfa6fe.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https%3A%2F%2Ftechtalk.vn%2Fgoogle-thay-doi-thuat-toan-tim-kiem-tin-tuc-uu-tien-noi-dung-goc.html&amp;size=m&amp;text=Google%20thay%20%C4%91%E1%BB%95i%20thu%E1%BA%ADt%20to%C3%A1n%20t%C3%ACm%20ki%E1%BA%BFm%20tin%20t%E1%BB%A9c%2C%20%C6%B0u%20ti%C3%AAn%20n%E1%BB%99i%20dung%20g%E1%BB%91c&amp;time=1568609558808&amp;type=share&amp;url=https%3A%2F%2Ftechtalk.vn%2Fgoogle-thay-doi-thuat-toan-tim-kiem-tin-tuc-uu-tien-noi-dung-goc.html" data-url="https://techtalk.vn/google-thay-doi-thuat-toan-tim-kiem-tin-tuc-uu-tien-noi-dung-goc.html"></iframe>
+                                               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li></ul>
+                                           </div>
+                                       </div>
+                                        <p><img src="../../assets/img/mlane.jpg" height="200" width="400"/>{{NewInfo1.images}}</p></br>
+                                        <b>{{NewInfo1.brief}}:</b></br>
+                                        <p>{{NewInfo1.detail}}</p>
+                                       <cite>_{{NewInfo1.user_name}}</cite></br>
+                                   </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

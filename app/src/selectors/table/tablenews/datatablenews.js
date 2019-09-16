@@ -1,46 +1,99 @@
-$(document).ready(function() {
-    $('#basic-datatables').DataTable({
-    });
+'use strict';
+angular
+    .module('myApp')
+    .directive('showinfonewdirec', showinfonewdirec)
+    .directive('insertnew', insertnew)
+    .controller('TablenewController',['$scope', '$http', 'dataNewFactory', '$location', '$mdDialog',function($scope, $http, dataNewFactory, $location, $mdDialog){
 
-    $('#multi-filter-select').DataTable( {
-        "pageLength": 5,
-        initComplete: function () {
-            this.api().columns().every( function () {
-                var column = this;
-                var select = $('<select class="form-control"><option value=""></option></select>')
-                    .appendTo( $(column.footer()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
+    // this.vm = this;
+    $scope.new = [];
+    $scope.newinsert = {};
+    $scope.getinfonew = {};
 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
+    this.$onInit = function () {
+        $scope.getListNew();
+        // $scope.showinfonew();
+    };
+        // FIX
+    $scope.getListNew = function () {
+        dataNewFactory.getListNew()
+            .then(function (response) {
+                    $scope.new = response.data;
+                    console.log(response.data);
+                },
+                function (error) {
+                    $scope.status = 'Unable to load customer data: ' + error.message;
+                });
+    };
+        // FIX
+    $scope.showinfonew= function(i){
+        console.log(i);
+        dataNewFactory.getnewinfo(i.id_news)
+            .then(function (response) {
+                    $scope.getinfonew= response.data;
+                    console.log($scope.getinfonew.id_news);
+                },
+                function (error) {
+                    $scope.status = 'Unable to load customer data: ' + error.message;
+                });
+    };
 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-        }
-    });
+    // $scope.showeditinfo= function(i){
+    //     console.log(i);
+    //     dataNewFactory.getnewinfo(i.id_news)
+    //         .then(function (response) {
+    //                 $scope.NewInfo= response.data;
+    //                 console.log($scope.NewInfo.id_news);
+    //             },
+    //             function (error) {
+    //                 $scope.status = 'Unable to load customer data: ' + error.message;
+    //             });
+    // };
+    // $scope.updateFormnew = function () {
+    //     dataNewFactory.updateNew($scope.NewInfo, $scope.ID)
+    //         .then(function success(response) {
+    //                 $location.path('/tablenew');
+    //                 alert("edit thanh cong");
+    //                 $scope.message = 'User data updated!';
+    //                 $scope.errorMessage = '';
+    //             },
+    //             function error(response) {
+    //                 $scope.errorMessage = 'Error updating user!';
+    //                 $scope.message = '';
+    //             });
+    // };
+        // FIX
+    $scope.deleterow = function (i) {
+        var id_news = $scope.new[i].id_news;
+        dataNewFactory.deleteNew(id_news)
+            .then(function success(response) {
+                    console.log(id_news);
+                    $scope.new.splice(i, 1);
+                    alert("Xoa thanh Cong");
+                    console.log($scope.new);
+                    $scope.message = 'User deleted!';
+                    $scope.User = null;
+                    $scope.errorMessage = '';
+                },
+                function error(response) {
+                    $scope.errorMessage = 'Error deleting user!';
+                    $scope.message = '';
+                });
+    };
 
-    // Add Row
-    $('#add-row').DataTable({
-        "pageLength": 5,
-    });
+}]);
 
-    var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+function insertnew() {
+    var directive = {
+        templateUrl: 'selectors/table/tablenews/insertnew.html',
+    };
+    return directive;
+}
 
-    $('#addRowButton').click(function() {
-        $('#add-row').dataTable().fnAddData([
-            $("#addName").val(),
-            $("#addPosition").val(),
-            $("#addOffice").val(),
-            action
-        ]);
-        $('#addRowModal').modal('hide');
+function showinfonewdirec() {
+    var directive = {
+        templateUrl: 'selectors/table/tablenews/newshowinfor.html',
+    };
+    return directive;
+}
 
-    });
-});

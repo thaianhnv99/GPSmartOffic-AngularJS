@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('myApp')
+    .module('myApp.tableinsurance', ['ngMaterial'])
     .controller('TableinsuranceController', ['$scope', '$http', 'dataInsuranceFactory', '$mdDialog', function ($scope, $http, dataInsuranceFactory, $mdDialog) {
         $scope.insurance = {};
         $scope.insuranceinfo = {};
@@ -30,30 +30,6 @@ angular
                     function (error) {
                         $scope.status = 'Unable to load customer data: ' + error.message;
                     });
-        };
-        $scope.showConfirm = function (ev, i) {
-            $scope.index = i;
-            console.log($scope.index);
-            var confirm = $mdDialog.confirm()
-                .title('Bạn có mún delete insurance!!')
-                .textContent('delete insurance in table.')
-                .ariaLabel('Lucky day')
-                .targetEvent(ev)
-                .ok('Delete!')
-                .cancel('Cancel');
-
-            $mdDialog.show(confirm).then(function () {
-                console.log($scope.index);
-                var idinsurance = $scope.insurance[i].idinsurance;
-                console.log(idinsurance);
-                dataInsuranceFactory.deleteinsurance(idinsurance)
-                    .then(function success(response) {
-                        $scope.insurance.splice(i, 1);
-                        alert('Da xoa thanh cong');
-                    });
-            }, function () {
-                $scope.status = 'hihi^^.';
-            });
         };
     }])
     .directive('insuranceshowinfo', function () {

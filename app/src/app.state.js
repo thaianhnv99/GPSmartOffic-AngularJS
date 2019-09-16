@@ -8,67 +8,40 @@ stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function stateConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state({
-            name: 'home',
-            url: '',
-            templateUrl: 'selectors/News/HomeNews.html',
-            controller: 'HomenewsController'
-        }).state({
-        name: 'homenews',
-        url: '/homenews',
-        templateUrl: 'selectors/News/HomeNews.html',
-        controller: 'HomenewsController'
-    }).state({
-        name: 'dashboard',
-        url: '/dashboard',
-        templateUrl: 'selectors/dashboard/dashboard.html'
-    }).state({
-        name: 'login',
-        url: '/login',
-        templateUrl: 'selectors/dashboard/dashboard.html'
-    }).state({
-        name: 'user',
-        url: '/user',
-        data: {
-            role: ['ADMIN']
-        },
-        templateUrl: 'selectors/table/tableusers/user.html',
-        controller: 'UserController'
-    }).state({
-        name: 'edituser',
-        url: '/edituser/:id',
-        data: {
-            role: ['ADMIN']
-        },
-        templateUrl: 'selectors/table/tableusers/edituser.html',
-        controller: 'edituserController'
-    }).state({
-        name: 'tablenews',
-        url: '/tablenews',
-        data: {
-            role: ['ADMIN']
-        },
-        templateUrl: 'selectors/table/tablenews/tablenews.html'
-    }).state({
-        name: 'editcarinfo',
-        url: '/editcarinfo/:id',
-        templateUrl: 'selectors/table/tablecar/Editcarinfo.html',
-        controller: 'EditcarinfoController'
-    }).state({
-        name: 'permission',
-        url: '/permission',
-        templateUrl: 'selectors/permissions/tablepermission.html',
-        controller: 'TablepermissionController'
-    }).state('access-denied', {
-        url: '/access-denied',
-        templateUrl: 'selectors/access-denied/access-denied.html',
-        controller: 'AccessdeniedController'
-
-    }).state('page-not-found', {
-        url: '/page-not-found',
-        templateUrl: 'selectors/page-not-found/page-not-found.html',
-        controller: 'PagenotfoundController'
-
-    });
-    $urlRouterProvider.otherwise('/page-not-found');
+            name: 'dashboard',
+            url: '/',
+            templateUrl: 'selectors/dashboard/dashboard.html',
+            controller: 'Shownew'
+        })
+        .state({
+            name: 'tablenews',
+            url: '/tablenews',
+            templateUrl: 'selectors/table/tablenews/tablenews.html',
+            controller: 'TablenewController'
+        })
+        .state({
+            name: 'editcarinfo',
+            url: '/editcarinfo/:id',
+            templateUrl: 'selectors/table/tablecar/Editcarinfo.html',
+            controller: 'EditcarinfoController'
+        })
+        .state({
+            name: 'insertnew',
+            url: '/insertnew',
+            templateUrl: 'selectors/table/tablenews/insertnew.html',
+            controller: 'InsertnewController'
+        })
+        .state({
+            name: 'editnewinfo',
+            url: '/editnewinfo/:id',
+            templateUrl: 'selectors/table/tablenews/Editnew.html',
+            controller: 'EditnewController'
+        })
+        .state({
+            name: 'infor',
+            url: '/infor/:id',
+            templateUrl: 'selectors/dashboard/infor.html',
+            controller: 'Shownew'
+        });
+    $urlRouterProvider.otherwise('/');
 }
-
