@@ -17,8 +17,10 @@
                 <md-tab label="Phòng ban">
                     <md-content class="md-padding">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">List Employee In Department</h4>
-                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                            <div ng-repeat="data in dataCountEmployeeInDepartment">
+                                <h4 class="card-title">Tổng nhân viên trong phòng ban:  {{data.count_employee}}</h4>
+                            </div>
+                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal" ng-click="GetListEmployeeNotInDepartment()">
                                 <i class="fa fa-plus"></i>
                                 Add Employee
                             </button>
@@ -42,7 +44,7 @@
                                         </tr>
                                         </tfoot>
                                         <tbody>
-                                        <tr dir-paginate="department in dataDepartments | itemsPerPage: 10 | filter:searchText">
+                                        <tr ng-repeat="department in dataDepartments">
                                             <td>{{department.id_employee}}</td>
                                             <td>{{department.full_name}}</td>
                                             <td>
@@ -50,7 +52,7 @@
                                                     <!--                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">-->
                                                     <!--                                                <i class="fa fa-edit"></i>-->
                                                     <!--                                            </button>-->
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" ng-click="DeleteEmployeeInDepartment(department.id_employee)">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 </div>
@@ -127,24 +129,40 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p class="small">Create a new row using this form, make sure you fill them all</p>
+                    <p class="small">List Employee not in Department</p>
                     <form>
                         <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group form-group-default">
-                                    <label>Name</label>
-                                    <input id="Id_department" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group form-group-default">
-                                    <label>Position</label>
-                                    <input id="Name_department" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
+                            <table id="add-row" class="display table table-striped table-hover" >
+                                <thead>
+                                <tr>
+                                    <th>id employee</th>
+                                    <th>full name</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>id employee</th>
+                                    <th>Position</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr ng-repeat="data in dataListEmployeeNotInDepartment">
+                                    <td>{{data.id_employee}}</td>
+                                    <td>{{data.full_name}}</td>
+                                    <td>
+                                        <div class="form-button-action">
+                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" ng-click="AddEmployeeInDepartment(data.id_employee)">
+                                                Add to Department
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="modal-footer no-bd">
-                            <button class="btn btn-primary" type="submit">Add</button>
                             <button class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>

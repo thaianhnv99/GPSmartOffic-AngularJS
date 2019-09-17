@@ -10,7 +10,6 @@ angular
         $scope.Employee = {};
         $scope.dataEmployee = {};
         $scope.selectUploadFile = "";
-        console.log("kiem tra: "+$stateParams.id);
         this.$onInit = function () {
             $scope.getListEmployee();
             if($stateParams.id !== null && $stateParams.id !== undefined){
@@ -37,9 +36,7 @@ angular
         };
         $scope.UpdateEmployee = function () {
             console.log("object update", $scope.dataEmployee);
-            dataFactoryEmployee.UpdateEmployee($scope.dataEmployee).then(function () {
-                $state.go('^', {reload: true});
-            });
+            dataFactoryEmployee.UpdateEmployee($scope.dataEmployee);
 
         };
         $scope.DeleteEmployee = function ($Employee) {

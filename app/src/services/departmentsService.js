@@ -11,7 +11,10 @@ angular
                 SearchDepartment : searchDepartment,
                 GetlistDepartmentById : getlistDepartmentById,
                 UpdateDepartment : updateDepartment,
-                GetListEmployeInDepartment : getListEmployeInDepartment
+                GetListEmployeInDepartment : getListEmployeInDepartment,
+                GetListEmployeeNotInDepartment : getListEmployeeNotInDepartment,
+                AddEmployeeInDepartment : addEmployeeInDepartment,
+                GetCountEmployeeInDepartment : getCountEmployeeInDepartment
             };
 
             function getlist() {
@@ -43,9 +46,23 @@ angular
             }
 
             function getListEmployeInDepartment(Department) {
-                console
                 return $http.post('http://localhost:8080/apis/listEmployeeInDepartment', Department);
             }
+
+            function getListEmployeeNotInDepartment() {
+                return $http.get('http://localhost:8080/apis/listEmployeeNotDepartment');
+            }
+
+            function addEmployeeInDepartment(Employee) {
+                console.log("object đã sua:", Employee);
+                return $http.put('http://localhost:8080/apis/updateEmployee', Employee);
+            }
+
+            function getCountEmployeeInDepartment(id) {
+                console.log("id nhan:", id);
+                return $http.post('http://localhost:8080/apis/listCountEmployeInDepartment', id);
+            }
+
             return dataFactory;
         }]);
     }]);

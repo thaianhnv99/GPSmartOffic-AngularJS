@@ -32,7 +32,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
         })
         .state({
             name: 'ListEmployeeInDepartment',
-            url: '/tableeployee/display/:id',
+            url: '/department/display/:idDepartment',
             templateUrl: 'selectors/table/tableDepartment/ListEmployeeInDepartment.html',
             controller: 'DepartmentController'
         });
