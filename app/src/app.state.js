@@ -10,8 +10,8 @@ function stateConfig($stateProvider, $urlRouterProvider) {
         .state({
             name: 'home',
             url: '',
-            templateUrl: 'selectors/News/HomeNews.html',
-            controller: 'HomenewsController'
+            templateUrl: 'selectors/home/home.html',
+            controller: 'Shownew'
         }).state({
         name: 'homenews',
         url: '/homenews',
@@ -24,67 +24,94 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     }).state({
         name: 'login',
         url: '/login',
-        templateUrl: 'selectors/dashboard/dashboard.html'
+        templateUrl: 'selectors/home/home.html',
+        controller: 'Shownew'
     }).state({
         name: 'user',
         url: '/user',
-        data: {
-            role: ['ADMIN']
-        },
         templateUrl: 'selectors/table/tableusers/user.html',
         controller: 'UserController'
     }).state({
         name: 'edituser',
         url: '/edituser/:id',
-        data: {
-            role: ['ADMIN']
-        },
         templateUrl: 'selectors/table/tableusers/edituser.html',
         controller: 'edituserController'
     }).state({
         name: 'myprofile',
         url: '/myprofile',
-        data: {
-            role: ['ADMIN']
-        },
         templateUrl: 'selectors/table/tableusers/myprofile.html'
         // controller: 'myuserController'
     }).state({
         name: 'editprofile',
         url: '/editprofile',
-        data: {
-            role: ['ADMIN']
-        },
         templateUrl: 'selectors/table/tableusers/editprofile.html',
         controller: 'edituserprofileController'
     }).state({
+        name: 'insertnew',
+        url: '/insertnew',
+        templateUrl: 'selectors/table/tablenews/insertnew.html',
+        controller: 'InsertnewController'
+    }).state({
+        name: 'editnewinfo',
+        url: '/editnewinfo/:id',
+        templateUrl: 'selectors/table/tablenews/Editnew.html',
+        controller: 'EditnewController'
+    }).state({
+        name: 'infor',
+        url: '/infor/:id',
+        templateUrl: 'selectors/home/infor.html',
+        controller: 'showinfo'
+    }).state({
         name: 'tablenews',
         url: '/tablenews',
-        data: {
-            role: ['ADMIN']
-        },
         templateUrl: 'selectors/table/tablenews/tablenews.html'
-    }).state({
-        name: 'editcarinfo',
-        url: '/editcarinfo/:id',
-        templateUrl: 'selectors/table/tablecar/Editcarinfo.html',
-        controller: 'EditcarinfoController'
     }).state({
         name: 'permission',
         url: '/permission',
         templateUrl: 'selectors/permissions/tablepermission.html',
         controller: 'TablepermissionController'
-    }).state('access-denied', {
-        url: '/access-denied',
-        templateUrl: 'selectors/access-denied/access-denied.html'
-        // controller: 'AccessdeniedController'
-
+    }).state('tabletimesheet', {
+        url: '/tabletimesheet',
+        templateUrl: 'selectors/table/tabletimesheet/timesheet.html',
+        controller: 'timesheetController'
+    }).state('edittimesheet', {
+        url: '/edittimesheet/:id',
+        templateUrl: 'selectors/table/tabletimesheet/edittimesheet.html',
+        controller: 'edittimesheetController'
     }).state('page-not-found', {
         url: '/page-not-found',
-        templateUrl: 'selectors/page-not-found/page-not-found.html',
-        controller: 'PagenotfoundController'
-
-    })
+        templateUrl: 'selectors/page-not-found/page-not-found.html'
+    }).state({
+        name: 'tabledepartment',
+        url: '/department',
+        templateUrl: 'selectors/table/tableDepartment/tableDepartment.html',
+        controller: 'DepartmentController'
+    }).state({
+        name: 'tableeployee',
+        url: '/tableeployee',
+        templateUrl: 'selectors/table/tableEmployee/tableEmployee.html',
+        controller: 'EmployeeController'
+    }).state({
+        name: 'Editemployee',
+        url: '/tableeployee/edit/:id',
+        templateUrl: 'selectors/table/tableEmployee/EditEmployee.html',
+        controller: 'EmployeeController'
+    }).state({
+        name: 'ListEmployeeInDepartment',
+        url: '/department/display/:idDepartment',
+        templateUrl: 'selectors/table/tableDepartment/ListEmployeeInDepartment.html',
+        controller: 'DepartmentController'
+    }).state({
+        name: 'ListPermissionsManager',
+        url: '/permissionsManager',
+        templateUrl: 'selectors/table/tablePermissons/tablePermissons.html',
+        controller: 'PermissionsController'
+    }).state({
+        name: 'PermissionsUser',
+        url: '/PermissionsUser',
+        templateUrl: 'selectors/table/PermissonsUser/permissonsUser.html',
+        controller: 'permissonsUserController'
+    });
     $urlRouterProvider.otherwise('/page-not-found');
 }
 

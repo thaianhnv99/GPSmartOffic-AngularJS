@@ -1,0 +1,139 @@
+<div class="content" ng-controller="PermissionsController">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">List Permissons Manager</h4>
+                </div>
+                <!--                    form add-->
+                <div class="modal fade" id="EditRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+														<span class="fw-mediumbold">
+														New</span>
+                                    <span class="fw-light">
+															Row
+														</span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="small">Create a new row using this form, make sure you fill them all</p>
+                                <form ng-submit="updatePermission()" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Id</label>
+                                                <input id="id_employee" type="text" class="form-control" placeholder="" ng-model="dataPermissionById.user_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Date</label>
+                                                <input id="id_employee" type="text" class="form-control" placeholder=""  ng-model="dataPermissionById.date | date:'dd/MM/yyyy'">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Activated</label>
+                                                <select ng-model="dataPermissionById.activated" ng-value="dataPermissionById.activated">
+                                                    <option value="true">Duyệt</option>
+                                                    <option value="false">Bỏ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer no-bd">
+                                        <button class="btn btn-primary" type="submit">Add</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-cloak>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="one">
+                    <form ng-submit="UpdateEmployee()">
+                        <div class="container">
+                            <div class="table-responsive">
+                                <table id="add-row" class="display table table-striped table-hover" >
+                                    <thead>
+                                        <tr>
+                                            <td>#</td>
+                                            <th>user name</th>
+                                            <th>date</th>
+                                            <th>status</th>
+                                            <th>reason</th>
+                                            <th>activated</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td>#</td>
+                                            <th>user name</th>
+                                            <th>date</th>
+                                            <th>status</th>
+                                            <th>reason</th>
+                                            <th>activated</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr ng-repeat="data in dataPermission track by $index">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{data.user_name}}</td>
+                                        <td ng-bind="data.date | date:'dd/MM/yyyy'"></td>
+                                        <td>{{data.status}}</td>
+                                        <td>{{data.reason}}</td>
+                                        <td>{{data.activated}}</td>
+                                        <td>
+                                            <div class="form-button-action">
+                                                <button type="button" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal" ng-click="getListById(data.user_name)">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <dir-pagination-controls></dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div class="modal-footer no-bd">
+                            <button class="btn btn-danger" data-dismiss="modal" ui-sref="tabledepartment">Back</button>
+                        </div>
+                    </form>
+                </md-tab>
+                <md-tab label="two">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Two</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+                        <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="three">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Three</h1>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+
+</div>
+
+

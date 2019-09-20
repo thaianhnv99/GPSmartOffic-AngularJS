@@ -330,7 +330,7 @@
                 </div>
                 <ul class="nav nav-primary">
                     <li class="nav-item" ui-sref-active="active">
-                        <a data-toggle="collapse" ui-sref="login" class="collapsed" aria-expanded="false">
+                        <a data-toggle="collapse" ui-sref="dashboard" class="collapsed" aria-expanded="false">
                             <i class="fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
@@ -339,9 +339,9 @@
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
-                        <h4 class="text-section">Components</h4>
+                        <h4 class="text-section">Administration</h4>
                     </li>
-                    <li ng-if="userslogin.users.name_role == 'ADMIN'||userslogin.users.name_role == 'MANAGER'" class="nav-item" ui-sref-active="active">
+                    <li ng-if="userslogin.users.name_role == 'ADMIN'" class="nav-item" ui-sref-active="active">
                         <a data-toggle="collapse" data-target="#users">
                             <i class="fas fa-layer-group"></i>
                             <p>Users</p>
@@ -371,28 +371,43 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a ui-sref="tableeployee">
+                                        <span class="sub-item">Table Employee</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <a ui-sref="tabledepartment">
                                         <span class="sub-item">Table Department</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a ui-sref="tableemployee">
-                                        <span class="sub-item">Table Employees</span>
+                                    <a ui-sref="ListPermissionsManager">
+                                        <span class="sub-item">Table Permissions</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a ui-sref="tableproject">
-                                        <span class="sub-item">Table Project</span>
+                                    <a ui-sref="tabletimesheet">
+                                        <span class="sub-item">Table TimeSheets</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item" ui-sref-active="active">
-                        <a data-toggle="collapse" ui-sref="permission">
+                        <a data-toggle="collapse" href="#permission">
                             <i class="fas fa-map-marker-alt"></i>
                             <p>Permissions</p>
+                            <span class="caret"></span>
                         </a>
+                        <div class="collapse" id="permission">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a ui-sref="PermissionsUser">
+                                        <span class="sub-item">Permission(User)</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item" ui-sref-active="active">
                         <a data-toggle="collapse" data-target="#logissuse">
@@ -413,14 +428,14 @@
                     <li class="nav-item" ui-sref-active="active">
                         <a data-toggle="collapse" data-target="#timesheet">
                             <i class="fas fa-desktop"></i>
-                            <p>Time Sheet</p>
+                            <p>TimeSheets</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="timesheet">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a ui-sref="lever">
-                                        <span class="sub-item">lever 1</span>
+                                    <a ui-sref="timesheet">
+                                        <span class="sub-item">timeheet</span>
                                     </a>
                                 </li>
                             </ul>
@@ -549,38 +564,38 @@
 <!--<script src="../src/services/carService.js"></script>-->
 <!--<script src="../src/services/insuranceService.js"></script>-->
 
-<!--tablecar-->
-<!--<script src="selectors/table/tablecar/tablecar.js"></script>-->
-<!--<script src="selectors/table/tablecar/Editcarinfo.js"></script>-->
-<!--<script src="selectors/table/tablecar/Insertcar.js"></script>-->
 
-<!--table news-->
+<!--tablenew-->
+<script src="selectors/home/home.js"></script>
+<script src="selectors/home/info.js"></script>
+<script src="selectors/table/tablenews/datatablenews.js"></script>
+<script src="selectors/table/tablenews/insertnew.js"></script>
+<script src="selectors/table/tablenews/Editnew.js"></script>
+<!--Services-->
+<script src="services/newService.js"></script>
 
-<!--directive-->
-<!--<script src="selectors/table/tablecar/Insertcar.js"></script>-->
+<!--timesheet-->
+<script src="selectors/table/tabletimesheet/timesheet.js"></script>
+<script src="selectors/table/tabletimesheet/edittimesheet.js"></script>
+<!--Services-->
+<script src="services/TimesheetService.js"></script>
 
-<!--tableInsurance-->
-<!--<script src="selectors/table/tableinsurance/tableinsurance.js"></script>-->
-<!--<script src="selectors/table/tableinsurance/addinsurance.js"></script>-->
-<!-- / -->
-<!-- SERVICES -->
-<!--<script src="services/show.fct.js"></script>-->
-<!-- / -->
 <!--Services-->
 <script src="services/UploadService.js"></script>
-<script src="../src/services/carService.js"></script>
-<!--<script src="../src/services/insuranceService.js"></script>-->
+<!--tableDepartment-->
+<script src="../src/services/departmentsService.js"></script>
+<script src="../src/selectors/table/tableDepartment/ControllerDepartment.js"></script>
 
-<!--tablecar-->
-<script src="selectors/table/tablecar/tablecar.js"></script>
-<script src="selectors/table/tablecar/Editcarinfo.js"></script>
-<!--<script src="selectors/table/tablecar/Insertcar.js"></script>-->
+<!--tableEmployee-->
+<script src="../src/services/employeeService.js"></script>
+<script src="../src/selectors/table/tableEmployee/ControllerEmployee.js"></script>
 
-<!--permission-->
-<script src="services/permissionService.js"></script>
-<script src="selectors/permissions/tablepermission.js"></script>
-<!--directive-->
-<script src="selectors/table/tablecar/Insertcar.js"></script>
+<!--tablePermissons-->
+<script src="../src/services/permissonsService.js"></script>
+<script src="../src/selectors/table/tablePermissons/ControllerPermissons.js"></script>
+
+<!--PermissonsUser-->
+<script src="../src/selectors/table/PermissonsUser/Controller_permissonsUser.js"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>

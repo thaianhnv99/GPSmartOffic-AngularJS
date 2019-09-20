@@ -1,7 +1,7 @@
-<div class="content" ng-controller="UserController">
+<div class="content" ng-controller="timesheetController">
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">TABLE USERS</h4>
+            <h4 class="page-title">TABLE TIMESHEETS</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a ui-sref="login">
@@ -18,7 +18,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a ui-sref="tablenews">Table Users</a>
+                    <a ui-sref="tabletimesheet">Table Timesheets</a>
                 </li>
             </ul>
         </div>
@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Table User</h4>
+                            <h4 class="card-title">Table Timesheet</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -37,28 +37,26 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Images</th>
-                                    <th ng-click="sort('name')">Username<span class="glyphicon sort-icon"
-                                                                              ng-show="sortKey=='name'"
-                                                                              ng-class="{'glyphicon-chevron-up':isASC,'glyphicon-chevron-down':!isASC}"></span>
-                                    </th>
-                                    <th>Fullname</th>
-                                    <th>Email</th>
-                                    <th>Block</th>
+                                    <th>Task</th>
+                                    <th>Username</th>
+                                    <th>Date time</th>
+                                    <th>Result</th>
+                                    <th>Status</th>
+                                    <th>Confirmed by</th>
                                     <th style="width: 10%; text-align: center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr dir-paginate="u in listuser|orderBy:sortBy:isASC|filter:search|itemsPerPage:5">
-                                    <td>{{$index+1}}</td>
-                                    <td><img class="img-fluid img-thumbnail"
-                                             ng-src="http://localhost:8080/files/{{u.images}}"/></td>
-                                    <td>{{u.user_name}}</td>
-                                    <td>{{u.first_name}} {{u.last_name}}</td>
-                                    <td>{{u.email}}</td>
-                                    <td>{{u.block?'locked': 'active'}}</td>
+                                <tr dir-paginate="t in timesheet|orderBy:sortBy:isASC|filter:search|itemsPerPage:5">
+                                    <td>{{t.id_timesheet}}</td>
+                                    <td>{{t.task}}</td>
+                                    <td>{{t.user_name}}</td>
+                                    <td>{{t.datetime | date:'MM/dd/yyyy hh:mm'}}</td>
+                                    <td>{{t.result}}</td>
+                                    <td ><span class="badge badge-warning">{{t.status}}</span></td>
+                                    <td style="text-align: center">{{t.confirmed_by}}</td>
                                     <td>
-                                        <div class="form-button-action"><a ui-sref="edituser({id: u.user_name})">
+                                        <div class="form-button-action"><a ui-sref="edittimesheet({id: t.id_timesheet})">
                                             <button type="button" data-toggle="tooltip" title=""
                                                     class="btn btn-link btn-primary btn-lg"
                                                     data-original-title="Edit Task">
@@ -67,11 +65,11 @@
                                         </a>
                                             <button type="button" data-toggle="tooltip" title=""
                                                     class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i class="fa fa-times" ng-click="showconfirm(u)"></i>
+                                                <i class="fa fa-times" ng-click="deletetimesheet(t)"></i>
                                             </button>
                                             <button type="button" class="btn btn-link btn-primary"
-                                                    ng-click="selectinfouser(u)" data-toggle="modal"
-                                                    data-target="#showinfouserModal">
+                                                    ng-click="showinfotimesheet(t)" data-toggle="modal"
+                                                    data-target="#showinfotimesheetModal">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </div>
@@ -86,6 +84,5 @@
             </div>
         </div>
     </div>
-    <div showinfouserdirective></div>
-    <div adduserdirective></div>
+    <div viewinfotimesheet></div>
 </div>

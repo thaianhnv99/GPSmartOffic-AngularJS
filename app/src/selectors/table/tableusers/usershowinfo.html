@@ -26,8 +26,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>Email</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="full name" ng-value="selectuser.email">
+                                        <label class="form-control">{{selectuser.email}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -35,15 +34,13 @@
                                 <div class="col-md-6 pr-1">
                                     <div class="form-group form-group-default">
                                         <label>FirstName</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="username" ng-value="selectuser.first_name">
+                                        <label class="form-control">{{selectuser.first_name}}</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pl-1">
                                     <div class="form-group form-group-default">
                                         <label>LastName</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="role" ng-value="selectuser.last_name">
+                                        <label class="form-control">{{selectuser.last_name}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -59,15 +56,13 @@
                                 <div class="col-md-4 px-1">
                                     <div class="form-group form-group-default">
                                         <label>Activate</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="activate" ng-value="selectuser.activated? 'Activaed': 'Not activated'">
+                                        <label class="form-control">{{selectuser.activated? 'Activaed': 'Not activated'}}</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4 pl-1">
                                     <div class="form-group form-group-default">
                                         <label>Block</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="activate" ng-value="selectuser.block? 'Blocked': 'Active'">
+                                        <label class="form-control">{{selectuser.block? 'Blocked': 'Active'}}</label>
                                     </div>
                                 </div>
                             </div>

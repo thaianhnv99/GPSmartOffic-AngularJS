@@ -1,11 +1,10 @@
-<script src="selectors/dashboard/dashboard.ctrl.js"></script>
 <div class="content">
     <div class="panel-header bg-primary-gradient">
         <div class="page-inner py-5">
             <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                 <div>
-                    <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-                    <h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
+                    <h2 class="text-white pb-2 fw-bold">HOME</h2>
+                    <h5 class="text-white op-7 mb-2">Show News</h5>
                 </div>
                 <div class="ml-md-auto py-2 py-md-0">
                     <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
@@ -21,7 +20,8 @@
                     <div class="card-body">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover" >
+                                <table id="dtHorizontalVerticalExample" class="table table-hover" cellspacing="0"
+                                       width="100%">
                                     <thead>
                                     <tr>
                                         <th scope="col">IMAGES</th>
@@ -32,31 +32,29 @@
                                         <th scope="col">OPTION</th>
                                     </tr>
                                     </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th scope="col">IMAGES</th>
-                                        <th scope="col">USER_NAME</th>
-                                        <th scope="col">TITLE</th>
-                                        <th scope="col">DATE</th>
-                                        <th scope="col">BRIEF</th>
-                                        <th scope="col">OPTION</th>
-                                    </tr>
-                                    </tfoot>
                                     <tbody>
-                                    <tr  ng-repeat="newlist in new1">
+                                    <tr dir-paginate="newlist in new1|orderBy:sortBy:isASC|filter:search|itemsPerPage:5">
                                         <td>
                                             <div class="avatar">
                                                 <img src="assets/img/jm_denis.jpg" alt="Items: "
-                                                 class="avatar-img rounded-circle">
+                                                     class="avatar-img rounded-circle">
                                             </div>
                                         </td><!--<td>{{newlist.id_news}}</td>-->
                                         <td>{{newlist.user_name}}</td>
-                                        <td><a data-toggle="modal" data-target="#exampleModalinfornew" ng-click="showinfonew(newlist)">{{newlist.title}}</a></td>
-                                        <td><div ng-bind="newlist.date | date:'MM/dd/yyyy hh:mm'"></div></td>
+                                        <td><a data-toggle="modal" data-target="#exampleModalinfornew"
+                                               ng-click="showinfonew(newlist)">{{newlist.title}}</a></td>
+                                        <td>
+                                            <div ng-bind="newlist.date | date:'MM/dd/yyyy hh:mm'"></div>
+                                        </td>
                                         <td>{{newlist.brief}}</td>
                                         <td>
                                             <!--<button class="btn btn-icon btn-primary btn-round btn-xs">-->
-                                                <a data-target="#exampleModalnew" class="btn btn-icon btn-primary btn-round btn-xs" ng-click="showinfo(newlist.id_news)" ui-sref="infor({id: newlist.id_news})"><i style="margin-top: 5px;"  alt title="Xem chi tiết" class="fa fa-plus"></i></a>
+                                            <a data-target="#exampleModalnew"
+                                               class="btn btn-icon btn-primary btn-round btn-xs"
+                                               ng-click="showinfo(newlist.id_news)"
+                                               ui-sref="infor({id: newlist.id_news})"><i style="margin-top: 5px;" alt
+                                                                                         title="Xem chi tiết"
+                                                                                         class="fa fa-plus"></i></a>
                                             <!--</button>-->
                                         </td>
                                     </tr>
@@ -65,6 +63,7 @@
                                 <div class="card-title"></div>
                             </div>
                         </div>
+                        <dir-pagination-controls style="float: right;margin-right: 100px;"></dir-pagination-controls>
                     </div>
                 </div>
             </div>

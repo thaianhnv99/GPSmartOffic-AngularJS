@@ -1,0 +1,225 @@
+<div class="content" ng-controller="EmployeeController">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">Add Row</h4>
+                    <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                        <i class="fa fa-plus"></i>
+                        Add Row
+                    </button>
+                </div>
+            </div>
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <form>
+                    <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" ng-model="searchText" aria-label="Search">
+                    <div class="input-group-append">
+                        <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></span>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-body">
+                <!-- Modal -->
+                <!--Form add -->
+                <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+														<span class="fw-mediumbold">
+														New</span>
+                                    <span class="fw-light">
+															Row
+														</span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="small">Create a new row using this form, make sure you fill them all</p>
+                                <form ng-submit="AddEmployee()" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Id</label>
+                                                <input id="id_employee" type="text" class="form-control" placeholder="" ng-model="Employee.id_employee">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Full name</label>
+                                                <input id="full_name" type="text" class="form-control" placeholder="" ng-model="Employee.full_name">
+                                            </div>
+                                        </div>
+<!--                                        <div class="col-sm-12">-->
+<!--                                            <div class="form-group form-group-default">-->
+<!--                                                <label>Images</label>-->
+<!--                                                <input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().filesChanged(this)" multiple>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                    </div>
+                                    <div class="modal-footer no-bd">
+                                        <button class="btn btn-primary" type="submit">Add</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form edit -->
+                <div class="modal fade" id="EditRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+														<span class="fw-mediumbold">
+														New</span>
+                                    <span class="fw-light">
+															Row
+														</span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="small">Create a new row using this form, make sure you fill them all</p>
+                                <form ng-submit="UpdateEmployee()">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Name</label>
+                                                <input id="Id_department" type="text" class="form-control" placeholder="" ng-model="dataEmployee.id_employee">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Position</label>
+                                                <input id="Name_department" type="text" class="form-control" placeholder="" ng-model="dataEmployee.full_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer no-bd">
+                                        <button class="btn btn-primary" type="submit">Add</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Add Department -->
+                <div class="modal fade" id="AddDepartment" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+														<span class="fw-mediumbold">
+														New</span>
+                                    <span class="fw-light">
+															Row
+														</span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="small">Create a new row using this form, make sure you fill them all</p>
+                                <form ng-submit="UpdateEmployee()">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Full name</label>
+                                                <input id="full_name" type="text" class="form-control" placeholder="" ng-model="dataEmployee.full_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Id department</label>
+                                                <select ng-model="dataEmployee.id_department">
+                                                    <option value="1">Phong ban 1</option>
+                                                    <option value="2">Phong ban 2</option>
+                                                    <option value="3">Phong ban 3</option>
+                                                    <option value="4">Phong ban 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer no-bd">
+                                        <button class="btn btn-primary" type="submit">Add</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">Back</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Displays -->
+                <div class="zui-scroller">
+                    <table id="add-row" class="display table table-striped table-hover" >
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Full name</th>
+                            <th>Images</th>
+                            <th>Id_department</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Full name</th>
+                            <th>Images</th>
+                            <th>Id_department</th>
+                            <th>Action</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr dir-paginate="employees in Employees | itemsPerPage: 10 | filter:searchText">
+                            <td>{{employees.id_employee}}</td>
+                            <td>{{employees.full_name}}</td>
+                            <td>{{employees.images}}</td>
+                            <td>{{employees.id_department}}</td>
+                            <td>
+                                <div class="form-button-action">
+                                    <!--                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">-->
+                                    <!--                                                <i class="fa fa-edit"></i>-->
+                                    <!--                                            </button>-->
+                                    <a ui-sref="Editemployee({id: employees.id_employee})">
+                                    <button type="button" title="" class="btn btn-link btn-primary btn-lg">
+                                        <i class="fa fa-edit"></i>
+                                        Edit
+                                    </button></a>
+                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" ng-click="DeleteEmployee(employees)">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+<!--                                    <button type="button"  title="" class="btn btn-link btn-danger" data-original-title="Remove" data-original-title="Edit Task" data-toggle="modal" data-target="#AddDepartment" ng-click="GetlistEmployeeById(employees.id_employee)">-->
+<!--                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>-->
+<!--                                    </button>-->
+
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <dir-pagination-controls></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

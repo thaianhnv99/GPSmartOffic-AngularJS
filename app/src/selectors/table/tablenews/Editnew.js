@@ -2,31 +2,32 @@
 
 angular
     .module('myApp')
-    .controller('EditcarinfoController', ['$scope', '$http', 'dataCarFactory', '$location', '$stateParams', function ($scope, $http, dataCarFactory, $location, $stateParams) {
-        $scope.CarInfo = {};
+    .controller('EditnewController', ['$scope', '$http', 'dataNewFactory', '$location', '$stateParams', function ($scope, $http, dataNewFactory, $location, $stateParams) {
+        $scope.NewInfo = {};
 
         this.$onInit = function () {
-            $scope.onshoweditinfo();
+             $scope.showeditinfo();
         };
-        $scope.onshoweditinfo = function () {
+        $scope.showeditinfo= function(){
             $scope.ID = $stateParams.id;
             console.log($scope.ID);
-            dataCarFactory.showcarinfo($scope.ID)
+            dataNewFactory.getnewinfo($scope.ID)
                 .then(function (response) {
-                        $scope.CarInfo = response.data;
-                        // console.log($scope.CarInfo);
+                        $scope.NewInfo = response.data;
+                        console.log($scope.NewInfo);
                     },
                     function (error) {
                         $scope.status = 'Unable to load customer data: ' + error.message;
                     });
         };
-        $scope.updateForm = function () {
-            dataFactory.updateCar($scope.CarInfo, $scope.ID)
+        $scope.updateFormnew = function () {
+            dataNewFactory.updateNew($scope.NewInfo, $scope.ID)
                 .then(function success(response) {
-                        $location.path('/tablecar');
-                        alert("edit thanh cong");
+                        $location.path('/tablenews');
+                        // alert("edit thanh cong");
                         $scope.message = 'User data updated!';
                         $scope.errorMessage = '';
+
                     },
                     function error(response) {
                         $scope.errorMessage = 'Error updating user!';
