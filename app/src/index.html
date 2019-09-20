@@ -395,8 +395,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a ui-sref="tableemployee">
-                                        <span class="sub-item">Table Employees</span>
+                                    <a ui-sref="ListPermissionsManager">
+                                        <span class="sub-item">Table Permissions</span>
                                     </a>
                                 </li>
                                 <li>
@@ -416,8 +416,8 @@
                         <div class="collapse" id="permission">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a ui-sref="permission">
-                                        <span class="sub-item">Permission</span>
+                                    <a ui-sref="PermissionsUser">
+                                        <span class="sub-item">Permission(User)</span>
                                     </a>
                                 </li>
                             </ul>
@@ -609,7 +609,14 @@
 <!--tableEmployee-->
 <script src="../src/services/employeeService.js"></script>
 <script src="../src/selectors/table/tableEmployee/ControllerEmployee.js"></script>
-<script src="selectors/Pagination/dirPagination.js"></script>
+
+<!--tablePermissons-->
+<script src="../src/services/permissonsService.js"></script>
+<script src="../src/selectors/table/tablePermissons/ControllerPermissons.js"></script>
+
+<!--PermissonsUser-->
+<script src="../src/selectors/table/PermissonsUser/Controller_permissonsUser.js"></script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>

@@ -35,46 +35,20 @@ function stateConfig($stateProvider, $urlRouterProvider) {
             url: '/department/display/:idDepartment',
             templateUrl: 'selectors/table/tableDepartment/ListEmployeeInDepartment.html',
             controller: 'DepartmentController'
+        })
+        .state({
+            name: 'ListPermissionsManager',
+            url: '/permissionsManager',
+            templateUrl: 'selectors/table/tablePermissons/tablePermissons.html',
+            controller: 'PermissionsController'
+        })
+        .state({
+            name: 'PermissionsUser',
+            url: '/PermissionsUser',
+            templateUrl: 'selectors/table/PermissonsUser/permissonsUser.html',
+            controller: 'permissonsUserController'
         });
 
     $urlRouterProvider.otherwise('/');
 }
 
-// .when('/tablecar', {
-//     templateUrl: 'selectors/table/tablecar/tablecar.html',
-//     controller: 'TablecarController as TablecarController'
-// })
-// .when('/tableinsurance', {
-//     templateUrl: 'selectors/table/tableinsurance/tableinsurance.html',
-//     controller: 'TableinsuranceController as TableinsuranceController'
-// })
-// .when('/editcarinfo/:id', {
-//     templateUrl: 'selectors/table/tablecar/Editcarinfo.html',
-//     controller: 'EditcarinfoController as EditcarinfoController'
-// })
-// .when('/demo', {
-//     templateUrl: 'selectors/table/tablecar/demo.html',
-//     controller: 'AppCtrlprogressLinearDemo1 as AppCtrlprogressLinearDemo1'
-// })
-// .when('/popular', {
-//     templateUrl: 'components/popular/popular.tpl.html',
-//     controller: 'PopularController as popular',
-//     resolve: {
-//         shows: function(ShowService) {
-//             return ShowService.getPopular();
-//         }
-//     }
-// })
-// .when('/view/:id', {
-//     templateUrl: 'components/view/view.tpl.html',
-//     controller: 'ViewController as view',
-//     resolve: {
-//         show: function(ShowService, $route) {
-//             return ShowService.get($route.current.params.id);
-//         }
-//     }
-// })
-// .otherwise({
-//     redirectTo: '/'
-// });
-// }
