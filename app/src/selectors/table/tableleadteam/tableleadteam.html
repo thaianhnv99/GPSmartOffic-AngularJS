@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex align-items-center">
-                    <h4 class="card-title">Project</h4>
+                    <h4 class="card-title">Team Lead</h4>
                     <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#AddRowModal">
                         <i class="fa fa-plus"></i>
                         Add Row
@@ -36,36 +36,20 @@
                         </div>
                         <div class="modal-body" ng-controller="TableprojectController">
                             <p class="small">Create a new row using this form, make sure you fill them all</p>
-                            <form ng-submit="addproject()" >
+                            <form ng-submit="addteamlead()" >
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
-                                            <label>ID Project</label>
+                                            <label>ID Team</label>
                                             <input type="text" class="form-control" placeholder=""
-                                                   ng-model="projectadd.id_project">
+                                                   ng-model="leadteamadd.id_team">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
-                                            <label>Name Project</label>
+                                            <label>Name Team</label>
                                             <input type="text" class="form-control" placeholder=""
-                                                   ng-model="projectadd.name_project">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-group-default">
-                                            <label>Start Time</label>
-                                            <input type="date" id="start" name="trip-start"
-                                                   value="2018-07-22"
-                                                   min="2018-01-01" max="2020-12-31" ng-model="projectadd.start_time">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-group-default">
-                                            <label>End Time</label>
-                                            <input type="date" id="end" name="trip-start"
-                                                   value="2018-07-22"
-                                                   min="2018-01-01" max="2020-12-31" ng-model="projectadd.end_time">
+                                                   ng-model="leadteamadd.name_team">
                                         </div>
                                     </div>
                                 </div>
@@ -98,29 +82,9 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
-                                            <label>NAME PROJECT</label>
+                                            <label>Name Team</label>
                                             <input id="Id_department" type="text" class="form-control" placeholder=""
                                                    ng-model="projectbyid.name_project">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-group-default">
-                                            <label>START_TIME</label>
-                                            <input type="date" id="start" name="trip-start"
-                                                   value="2018-07-22"
-                                                   min="2018-01-01" max="2020-12-31" ng-model="projectbyid.start_time">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-group-default">
-                                            <label>End Time</label>
-                                            <input type="date" id="end" name="trip-start"
-                                                   value="2018-07-22"
-                                                   min="2018-01-01" max="2020-12-31" ng-model="projectbyid.end_time">
                                         </div>
                                     </div>
                                 </div>
@@ -161,17 +125,17 @@
                             <td>
                                 <button type="button" title="" class="btn btn-link btn-primary btn-lg"
                                         data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal"
-                                        ng-click="getlistprojectbyid(listproject.id_project)">
+                                        ng-click="">
                                     <i class="fa fa-edit"></i>
                                 </button>
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
-                                        data-original-title="Remove" ng-click="delproject(listproject.id_project)">
+                                        data-original-title="Remove" ng-click="deleteteamlead(listteam.id_team)">
                                     <i class="fa fa-times"></i>
                                 </button>
                                 <button type="button" data-toggle="tooltip" title=""
                                         class="btn btn-link btn-primary btn-lg" data-original-title="Show"
                                         data-toggle="modal" data-target="#ShowRowModal"
-                                        ui-sref="ListEmployeeInDepartment({id: department.id_department})">
+                                        ui-sref="employeeinleadteama({idteam: listteam.id_team})">
                                     <i class="fas fa-eye"></i>
                                 </button>
                             </td>

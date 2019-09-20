@@ -109,7 +109,7 @@
                                         <div class="form-group form-group-default">
                                             <label>START_TIME</label>
                                             <input type="date" id="start" name="trip-start"
-                                                   value="2018-07-22"
+                                                   ng-bind="projectbyid.start_time"
                                                    min="2018-01-01" max="2020-12-31" ng-model="projectbyid.start_time">
                                         </div>
                                     </div>
@@ -117,9 +117,10 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
+
                                             <label>End Time</label>
-                                            <input type="date" id="end" name="trip-start"
-                                                   value="2018-07-22"
+                                            <input type="date" id="start" name="trip-start"
+                                                   ng-bind="projectbyid.end_time"
                                                    min="2018-01-01" max="2020-12-31" ng-model="projectbyid.end_time">
                                         </div>
                                     </div>
@@ -159,8 +160,8 @@
                         <tr ng-repeat="listproject in project track by $index">
                             <td>{{$index + 1}}</td>
                             <td>{{listproject.name_project}}</td>
-                            <td>{{listproject.start_time}}</td>
-                            <td>{{listproject.end_time}}</td>
+                            <td ng-bind="listproject.start_time | date:'dd/MM/yyyy'"></td>
+                            <td ng-bind="listproject.end_time | date:'dd/MM/yyyy'"></td>
                             <td>
                                 <button type="button" title="" class="btn btn-link btn-primary btn-lg"
                                         data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal"

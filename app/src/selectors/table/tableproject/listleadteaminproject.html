@@ -3,6 +3,25 @@
         <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="one">
                 <md-content class="md-padding">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Team</h4>
+                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#AddRowModal">
+                                <i class="fa fa-plus"></i>
+                                Add Row
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-group md-form form-sm form-2 pl-0">
+                        <form ng-submit="SearchDepartment(dataDepartments)">
+                            <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search"
+                                   aria-label="Search" ng-model="dataDepartments.name_department">
+                            <div class="input-group-append">
+                        <span class="input-group-text amber lighten-3" id="basic-text1"><button type="submit"><i
+                                class="fas fa-search text-grey" aria-hidden="true"></i></button></span>
+                            </div>
+                        </form>
+                    </div>
                     <h2>Danh sách team tham ra dự án:</h2>
                     <table id="basic-datatables" class="display table table-striped table-hover">
                         <thead>
@@ -27,11 +46,6 @@
                             <td>{{listteams.name_team}}</td>
                             <td>{{listteams.quantity}}</td>
                             <td>
-                                <button type="button" title="" class="btn btn-link btn-primary btn-lg"
-                                        data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal"
-                                        ng-click="getlistprojectbyid(listproject.name_team)">
-                                    <i class="fa fa-edit"></i>
-                                </button>
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
                                         data-original-title="Remove" ng-click="delproject(listproject.id_project)">
                                     <i class="fa fa-times"></i>

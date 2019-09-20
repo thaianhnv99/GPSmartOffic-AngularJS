@@ -55,13 +55,19 @@ function stateConfig($stateProvider, $urlRouterProvider) {
             name: 'leadteaminproject',
             url: '/leadteaminproject/:id',
             templateUrl: 'selectors/table/tableproject/listleadteaminproject.html',
-            controller: 'TableprojectController'
+            controller: 'TableleadteamController'
         })
         .state({
             name: 'employeeinleadteam',
             url: '/employeeinleadteam/:idteam',
-            templateUrl: 'selectors/table/tableproject/listemployeeinleadteam.html',
-            controller: 'TableprojectController'
+            templateUrl: 'selectors/table/tableproject/listeameployeeinleadteam.html',
+            controller: 'TableleadteamController'
+        })
+        .state({
+            name: 'employeeinleadteama',
+            url: '/employeeinleadteama/:idteam',
+            templateUrl: 'selectors/table/tableleadteam/listeameployeeinleadteama.html',
+            controller: 'TableleadteamController'
         })
         .state('access-denied', {
             url: '/access-denied',

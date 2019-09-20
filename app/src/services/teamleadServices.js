@@ -7,7 +7,9 @@ angular
             var dataTeamleadFactory = {
                 getlistleadteam: getlistleadteam,
                 getlistleadteambyidproject: getlistleadteambyidproject,
-                getlistemployeebyidteamlead: getlistemployeebyidteamlead
+                getlistemployeebyidteamlead: getlistemployeebyidteamlead,
+                deleteteamlead: deleteteamlead,
+                addteamlead: addteamlead
             };
 
             function getlistleadteam() {
@@ -18,6 +20,12 @@ angular
             }
             function getlistemployeebyidteamlead(idteam) {
                 return $http.get('http://localhost:8080/apis/employeebyidteamlead/' + idteam);
+            }
+            function deleteteamlead(idteam) {
+                return $http.delete('http://localhost:8080/apis/deleteteamlead/' + idteam);
+            }
+            function addteamlead(teamlead) {
+                return $http.post('http://localhost:8080/apis/addteamlead', teamlead);
             }
             return dataTeamleadFactory;
         }]);

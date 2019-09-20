@@ -7,6 +7,7 @@ angular
 
 function TableleadteamController($http, $scope, $mdDialog, dataTeamleadFactory, $stateParams) {
     $scope.leadteam = {};
+    $scope.leadteamadd = {};
     $scope.leadteambyidproject = {};
     $scope.employeebyidteam = {};
     this.$onInit = function () {
@@ -28,6 +29,7 @@ function TableleadteamController($http, $scope, $mdDialog, dataTeamleadFactory, 
                     alert("error load data");
                 });
         }
+
     };
     $scope.getlistleadteam = function () {
         dataTeamleadFactory.getlistleadteam()
@@ -37,5 +39,24 @@ function TableleadteamController($http, $scope, $mdDialog, dataTeamleadFactory, 
                 function (error) {
                     alert("error load data");
                 });
+    };
+    $scope.addteamlead = function () {
+        dataTeamleadFactory.addteamlead($scope.leadteamadd)
+            .then(function success(response) {
+                    $scope.leadteamadd = response.data;
+                    alert("Thêm Thành công ^^")
+                },
+                function (error) {
+                    alert("Lỗi không xác định !!");
+                });
+
+    };
+    $scope.deleteteamlead = function (idteam) {
+        dataTeamleadFactory.deleteteamlead(idteam)
+            .then(function success() {
+                alert("xoa thanh cong");
+            },function (error) {
+                alert("error !!!");
+            });
     };
 }
