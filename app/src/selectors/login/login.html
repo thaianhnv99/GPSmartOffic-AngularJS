@@ -1,68 +1,92 @@
 <link rel="stylesheet" href="selectors/login/login.css">
 <script type="text/ng-template" id="tabDialog.tmpl.html">
     <md-dialog class="fullscreen-dialog">
-<!--        <form>-->
-            <md-toolbar>
-                <div class="md-toolbar-tools">
-                    <h2>WELCOME, SMART OFFICE</h2>
-                    <span flex></span>
-                    <md-button class="md-icon-button" ng-click="cancel()">
-                        <md-icon class="fa fa-times fa-2x"></md-icon>
-                    </md-button>
-                </div>
-            </md-toolbar>
-            <md-dialog-content style="width: 45%;margin: 0 auto;">
-                <md-tabs md-dynamic-height md-border-bottom>
-                    <md-tab label="Login">
-                        <md-content class="md-padding">
-                            <h1 class="md-display-2" style="text-align: center;">Login</h1>
-                            <form ng-submit="login()" ng-controller="LoginController">
-                                <div class="form-group">
-                                    <label for="exampleInputusernamel1">Username</label>
-                                    <input type="text" class="form-control" id="exampleInputusernamel1"
-                                           aria-describedby="emailHelp" placeholder="Enter username"
-                                    ng-model="formuser.username">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                           placeholder="Password" ng-model="formuser.password">
-                                </div>
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
-                            </form>
-                        </md-content>
-                    </md-tab>
-                    <md-tab label="Registration">
-                        <md-content class="md-padding">
-                            <h1 class="md-display-2" style="text-align: center;">Registration</h1>
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail2">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail2"
-                                           aria-describedby="emailHelp" placeholder="Enter email">
-                                    <small id="emailHelp1" class="form-text text-muted">We'll never share your email
-                                        with anyone else.
-                                    </small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword2"
-                                           placeholder="Password">
-                                </div>
-                                <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        </md-content>
-                    </md-tab>
-                </md-tabs>
-            </md-dialog-content>
-<!--        </form>-->
+        <!--        <form>-->
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>WELCOME, SMART OFFICE</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="fa fa-times fa-2x"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="width: 45%;margin: 0 auto;">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Login">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2" style="text-align: center;">Login</h1>
+                        <form ng-submit="login()" ng-controller="LoginController">
+                            <div class="form-group">
+                                <label for="exampleInputusernamel1">Username</label>
+                                <input type="text" class="form-control" id="exampleInputusernamel1"
+                                       aria-describedby="emailHelp" placeholder="Enter username"
+                                       ng-model="formuser.username">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                       placeholder="Password" ng-model="formuser.password">
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+                        </form>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Registration">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2" style="text-align: center;">Registration</h1>
+                        <form ng-submit="registerUser()" ng-controller="RegisterController"
+                              name="userForm" novalidate>
+                            <div class="form-group">
+                                <label for="exampleInputusernamel1">Username</label>
+                                <input type="text" class="form-control" name="name"
+                                       placeholder="Enter username" ng-minlength="3" ng-maxlength="12" ng-required=true
+                                       ng-model="formregister.user_name">
+                                <span class="error form-text text-muted" ng-show="userForm.name.$error.required">required</span>
+                                <span class="error form-text text-muted" ng-show="userForm.name.$error.minlength">words must be more than 6</span>
+                                <span class="error form-text text-muted" ng-show="userForm.name.$error.maxlength">words must be less than 12</span>
+                                <span class="valid form-text text-muted" ng-show="userForm.name.$valid">OK</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">FirstName</label>
+                                <input type="text" class="form-control" name="firstname"
+                                       placeholder="enter FirstName" ng-minlength="2" ng-maxlength="6" ng-required=true
+                                       ng-model="formregister.first_name">
+                                <span class="error form-text text-muted" ng-show="userForm.firstname.$error.required">required</span>
+                                <span class="error form-text text-muted" ng-show="userForm.firstname.$error.minlength">words must be more than 2</span>
+                                <span class="error form-text text-muted" ng-show="userForm.firstname.$error.maxlength">words must be less than 6</span>
+                                <span class="valid form-text text-muted" ng-show="userForm.firstname.$valid">OK</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">LastName</label>
+                                <input type="text" class="form-control" name="lastname"
+                                       placeholder="enter LastName" ng-minlength="2" ng-maxlength="6" ng-required=true
+                                       ng-model="formregister.last_name">
+                                <span class="error form-text text-muted" ng-show="userForm.lastname.$error.required">required</span>
+                                <span class="error form-text text-muted" ng-show="userForm.lastname.$error.minlength">words must be more than 2</span>
+                                <span class="error form-text text-muted" ng-show="userForm.lastname.$error.maxlength">words must be less than 6</span>
+                                <span class="valid form-text text-muted" ng-show="userForm.lastname.$valid">OK</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Email</label>
+                                <input type="email" name="mail" class="form-control" id="exampleInputEmail2"
+                                       ng-pattern="/^.+@gmail\.com$/" ng-required=true
+                                       aria-describedby="emailHelp" placeholder="Enter email"
+                                       ng-model="formregister.email">
+                                <span class="error"
+                                      ng-show="!userForm.mail.$error.required&&userForm.mail.$error.pattern">gmail address is required</span>
+                                <span class="valid" ng-show="userInfo.mail.$valid">OK</span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+        <!--        </form>-->
     </md-dialog>
 </script>

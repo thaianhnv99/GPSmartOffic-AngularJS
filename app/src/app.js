@@ -7,8 +7,9 @@ angular.module('myApp', [
     'ngMessages',
     'ngAria',
     'ngAnimate',
-    'ngStorage'
+    'ngStorage',
 ])
+
     .run(['$http', '$state', '$rootScope', 'AuthService', '$localStorage', function ($http, $state, $rootScope, AuthService, $localStorage) {
         // if (AuthService.user) {
         //     $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
@@ -41,4 +42,20 @@ angular.module('myApp', [
                 }
             }
         });
+    }])
+    .directive('fileMole', ['$Parse', function ($parse) {
+        return{
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var model = $parse(attrs.fileModel);
+                var modelSeter = model.assign;
+
+                element.bind('change', function () {
+                    scope.$apply(function () {
+                        modelSeter(scope, element[0].files[0]);
+                    });
+                });
+            }
+        };
     }]);
+

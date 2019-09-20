@@ -5,7 +5,8 @@ angular.module('myApp')
         $provide.factory('dataUserFactory', ['$http', function ($http) {
             var dataUserFactory = {
                 loaduserlogin: loaduserlogin,
-                getlistuser: getlistuser
+                getlistuser: getlistuser,
+                registeruser: registeruser,
             };
 
             function loaduserlogin(user) {
@@ -15,7 +16,11 @@ angular.module('myApp')
             function getlistuser() {
                 return $http.get('http://localhost:8080/api/users');
             }
-
+            function registeruser(user) {
+                return $http.post('http://localhost:8080/apis/register', user);
+            }
             return dataUserFactory;
         }]);
     }]);
+
+

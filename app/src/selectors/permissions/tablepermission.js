@@ -15,11 +15,11 @@ function TablepermissionController($scope, dataPermissionFactory) {
     $scope.getlistpermission = function () {
         dataPermissionFactory.getlistpermission()
             .then(function (response) {
-                $scope.permissions = response.data;
-                console.log($scope.permission);
-            },
+                    $scope.permissions = response.data;
+                    console.log($scope.permission);
+                },
                 function (error) {
-                    alert("error load data")
-                })
-    }
+                    alert("error load data");
+                });
+    };
 }

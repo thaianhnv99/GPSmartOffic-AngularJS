@@ -1,0 +1,53 @@
+<div ng-cloak ng-controller="TableleadteamController">
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="one">
+                <md-content class="md-padding">
+                    <h2>Danh sách team tham ra dự án:</h2>
+                    <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>name_team</th>
+                            <th>quantity</th>
+                            <th>action</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>NO</th>
+                            <th>name_team</th>
+                            <th>quantity</th>
+                            <th>action</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr ng-repeat="listteams in leadteambyidproject track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td>{{listteams.name_team}}</td>
+                            <td>{{listteams.quantity}}</td>
+                            <td>
+                                <button type="button" title="" class="btn btn-link btn-primary btn-lg"
+                                        data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal"
+                                        ng-click="getlistprojectbyid(listproject.name_team)">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                        data-original-title="Remove" ng-click="delproject(listproject.id_project)">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <button ng-controller="TableleadteamController" type="button" data-toggle="tooltip" title=""
+                                        class="btn btn-link btn-primary btn-lg" data-original-title="Show"
+                                        data-toggle="modal" data-target="#ShowRowModal"
+                                        ui-sref="employeeinleadteam({idteam: listteams.id_team})">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

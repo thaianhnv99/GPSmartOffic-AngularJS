@@ -38,6 +38,31 @@ function stateConfig($stateProvider, $urlRouterProvider) {
             templateUrl: 'selectors/permissions/tablepermission.html',
             controller: 'TablepermissionController'
         })
+        .state({
+            name: 'tableproject',
+            url: '/tableproject',
+            templateUrl: 'selectors/table/tableproject/tableproject.html',
+            controller: 'TableprojectController'
+        })
+        .state({
+            name: 'tableteamlead',
+            url: '/tableteamlead',
+            templateUrl: 'selectors/table/tableleadteam/tableleadteam.html',
+            controller: 'TableleadteamController'
+
+        })
+        .state({
+            name: 'leadteaminproject',
+            url: '/leadteaminproject/:id',
+            templateUrl: 'selectors/table/tableproject/listleadteaminproject.html',
+            controller: 'TableprojectController'
+        })
+        .state({
+            name: 'employeeinleadteam',
+            url: '/employeeinleadteam/:idteam',
+            templateUrl: 'selectors/table/tableproject/listemployeeinleadteam.html',
+            controller: 'TableprojectController'
+        })
         .state('access-denied', {
             url: '/access-denied',
             templateUrl: 'selectors/access-denied/access-denied.html',

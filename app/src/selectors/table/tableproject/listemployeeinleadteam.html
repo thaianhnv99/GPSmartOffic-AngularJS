@@ -1,0 +1,53 @@
+<div ng-cloak ng-controller="TableleadteamController">
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="one">
+                <md-content class="md-padding">
+                    <h2>Danh sach nhan vien trong du an:</h2>
+                    <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>ID_Employee</th>
+                            <th>full_name</th>
+                            <th>action</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>NO</th>
+                            <th>ID_Employee</th>
+                            <th>full_name</th>
+                            <th>action</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr ng-repeat="listeamployee in employeebyidteam track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td>{{listeamployee.id_employee}}</td>
+                            <td>{{listeamployee.full_name}}</td>
+                            <td>
+                                <button type="button" title="" class="btn btn-link btn-primary btn-lg"
+                                        data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal"
+                                        ng-click="getlistprojectbyid(listproject.name_team)">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                        data-original-title="Remove" ng-click="delproject(listproject.id_project)">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <button type="button" data-toggle="tooltip" title=""
+                                        class="btn btn-link btn-primary btn-lg" data-original-title="Show"
+                                        data-toggle="modal" data-target="#ShowRowModal"
+                                        ui-sref="ListEmployeeInDepartment({id: department.id_department})">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

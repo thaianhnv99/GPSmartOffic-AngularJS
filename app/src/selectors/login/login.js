@@ -30,8 +30,8 @@ function LoginController($http, $scope, $mdDialog, dataUserFactory, $state, $loc
                     alert('Authetication Failed !');
                 }
             }, function error(error) {
-                alert('Authetication Failed !' + error)
-            })
+                alert('Authetication Failed !' + error);
+            });
     };
     // $scope.$onInit = function(){
     //     $scope.showDialog();
