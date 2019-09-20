@@ -12,7 +12,8 @@ angular.module('myApp')
                 getinfouser: getinfouser,
                 getrolebyusername: getrolebyusername,
                 deleterolebyusername: deleterolebyusername,
-                updaterolebyusername: updaterolebyusername
+                updaterolebyusername: updaterolebyusername,
+                registeruser: registeruser
             };
 
             function loaduserlogin(user) {
@@ -50,6 +51,10 @@ angular.module('myApp')
 
             function updaterolebyusername(username, idrole) {
                 return $http.post('http://localhost:8080/api/role/updaterolebyusername/' + username, idrole)
+            }
+
+            function registeruser(user) {
+                return $http.post('http://localhost:8080/apis/register', user);
             }
 
             return dataUserFactory;

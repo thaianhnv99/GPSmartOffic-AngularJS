@@ -22,6 +22,8 @@ function LoginController($http, $scope, $rootScope, $mdDialog, dataUserFactory, 
                     if (response.data.user.activated === true) {
                         if (response.data.user.block === false) {
                             alert("LoginSuccessful");
+                            $mdDialog.hide();
+                            // DialogController.cancel();
                             $localStorage.currentUser = {users: response.data.user, token: response.data.token};
                             console.log($localStorage.currentUser);
                             $rootScope.$broadcast('LoginSuccessful');

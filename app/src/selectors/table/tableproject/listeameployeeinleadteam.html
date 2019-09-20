@@ -1,0 +1,34 @@
+<div ng-cloak ng-controller="TableleadteamController">
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="one">
+                <md-content class="md-padding">
+                    <h2>Danh sach nhan vien trong du an:</h2>
+                    <table id="basic-datatables" class="display table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>ID_Employee</th>
+                            <th>full_name</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>NO</th>
+                            <th>ID_Employee</th>
+                            <th>full_name</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr ng-repeat="listeamployee in employeebyidteam track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td>{{listeamployee.id_employee}}</td>
+                            <td>{{listeamployee.full_name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

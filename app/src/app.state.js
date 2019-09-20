@@ -81,12 +81,14 @@ function stateConfig($stateProvider, $urlRouterProvider) {
     }).state('page-not-found', {
         url: '/page-not-found',
         templateUrl: 'selectors/page-not-found/page-not-found.html'
-    }).state({
-        name: 'tabledepartment',
-        url: '/department',
-        templateUrl: 'selectors/table/tableDepartment/tableDepartment.html',
-        controller: 'DepartmentController'
-    }).state({
+    })
+    // Thang
+        .state({
+            name: 'tabledepartment',
+            url: '/department',
+            templateUrl: 'selectors/table/tableDepartment/tableDepartment.html',
+            controller: 'DepartmentController'
+        }).state({
         name: 'tableeployee',
         url: '/tableeployee',
         templateUrl: 'selectors/table/tableEmployee/tableEmployee.html',
@@ -111,6 +113,33 @@ function stateConfig($stateProvider, $urlRouterProvider) {
         url: '/PermissionsUser',
         templateUrl: 'selectors/table/PermissonsUser/permissonsUser.html',
         controller: 'permissonsUserController'
+    })
+    // Dung
+        .state({
+            name: 'tableproject',
+            url: '/tableproject',
+            templateUrl: 'selectors/table/tableproject/tableproject.html',
+            controller: 'TableprojectController'
+        }).state({
+        name: 'tableteamlead',
+        url: '/tableteamlead',
+        templateUrl: 'selectors/table/tableleadteam/tableleadteam.html',
+        controller: 'TableleadteamController'
+    }).state({
+        name: 'leadteaminproject',
+        url: '/leadteaminproject/:id',
+        templateUrl: 'selectors/table/tableproject/listleadteaminproject.html',
+        controller: 'TableleadteamController'
+    }).state({
+        name: 'employeeinleadteam',
+        url: '/employeeinleadteam/:idteam',
+        templateUrl: 'selectors/table/tableproject/listeameployeeinleadteam.html',
+        controller: 'TableleadteamController'
+    }).state({
+        name: 'employeeinleadteama',
+        url: '/employeeinleadteama/:idteam',
+        templateUrl: 'selectors/table/tableleadteam/listeameployeeinleadteama.html',
+        controller: 'TableleadteamController'
     });
     $urlRouterProvider.otherwise('/page-not-found');
 }
