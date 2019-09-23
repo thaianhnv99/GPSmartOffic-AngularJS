@@ -39,16 +39,15 @@ function TableprojecController($http, $scope, $mdDialog, dataProjectFactory) {
         dataProjectFactory.addProject($scope.projectadd)
             .then(function success(response) {
                     $scope.projectadd = response.data;
-                    alert("Thêm thành công");
-                },
-                function (error) {
-                    alert("loi roi");
+                    $scope.projectadd.finderror === "OK" ? alert("Add thanh cong") : alert("ID bi trung");
+                    $scope.getlistproject();
                 });
     };
     $scope.delproject = function (id) {
         dataProjectFactory.delProject(id)
             .then(function success() {
                 alert("xóa thành công");
+                $scope.getlistproject();
             },
             function (error) {
                 alert("loi roi");
@@ -59,6 +58,7 @@ function TableprojecController($http, $scope, $mdDialog, dataProjectFactory) {
         dataProjectFactory.updProject(project)
             .then(function success() {
                 alert("sua thanh cong");
+                $scope.getlistproject();
             },function (error) {
                 alert("sua khong thanh cong");
             });

@@ -127,7 +127,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
         controller: 'TableleadteamController'
     }).state({
         name: 'leadteaminproject',
-        url: '/leadteaminproject/:id',
+        url: '/leadteaminproject/:idproject',
         templateUrl: 'selectors/table/tableproject/listleadteaminproject.html',
         controller: 'TableleadteamController'
     }).state({

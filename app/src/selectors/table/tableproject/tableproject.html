@@ -15,10 +15,6 @@
                 <form ng-submit="SearchDepartment(dataDepartments)">
                     <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search"
                            aria-label="Search" ng-model="dataDepartments.name_department">
-                    <div class="input-group-append">
-                        <span class="input-group-text amber lighten-3" id="basic-text1"><button type="submit"><i
-                                class="fas fa-search text-grey" aria-hidden="true"></i></button></span>
-                    </div>
                 </form>
             </div>
             <!--Form add -->
@@ -157,7 +153,7 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr ng-repeat="listproject in project track by $index">
+                        <tr dir-paginate="listproject in project | itemsPerPage: 5 track by $index">
                             <td>{{$index + 1}}</td>
                             <td>{{listproject.name_project}}</td>
                             <td ng-bind="listproject.start_time | date:'dd/MM/yyyy'"></td>
@@ -175,13 +171,14 @@
                                 <button ng-controller="TableleadteamController" type="button" data-toggle="tooltip" title=""
                                         class="btn btn-link btn-primary btn-lg" data-original-title="Show"
                                         data-toggle="modal"
-                                        ui-sref="leadteaminproject({id: listproject.id_project})">
+                                        ui-sref="leadteaminproject({idproject: listproject.id_project})">
                                     <i class="fas fa-eye"></i>
                                 </button>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <dir-pagination-controls></dir-pagination-controls>
                 </div>
             </div>
         </div>
