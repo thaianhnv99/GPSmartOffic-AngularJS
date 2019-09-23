@@ -12,10 +12,8 @@
             </div>
             <div class="input-group md-form form-sm form-2 pl-0">
                 <form>
-                    <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" ng-model="searchText" aria-label="Search">
-                    <div class="input-group-append">
-                        <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search text-grey" aria-hidden="true"></i></span>
-                    </div>
+                    <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search id employee " aria-label="Search employee" ng-change="searchEmployee(Employeess)" ng-model="Employeess.id_employee">
+                    <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search full name" aria-label="Search full name" ng-change="searchEmployee(Employeess)" ng-model="Employeess.full_name">
                 </form>
             </div>
 
@@ -23,7 +21,7 @@
                 <!-- Modal -->
                 <!--Form add -->
                 <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog" role="document" style="max-width: 796px;">
                         <div class="modal-content">
                             <div class="modal-header no-bd">
                                 <h5 class="modal-title">
@@ -39,26 +37,119 @@
                             </div>
                             <div class="modal-body">
                                 <p class="small">Create a new row using this form, make sure you fill them all</p>
-                                <form ng-submit="AddEmployee()" enctype="multipart/form-data">
+                                <form ng-submit="AddEmployee(Employee.id_employee)" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-4">
                                             <div class="form-group form-group-default">
-                                                <label>Id</label>
-                                                <input id="id_employee" type="text" class="form-control" placeholder="" ng-model="Employee.id_employee">
+                                                <label>Id employee</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.id_employee">
                                             </div>
                                         </div>
-                                        <div class="col-sm-12">
+                                        <div class="col-4">
                                             <div class="form-group form-group-default">
                                                 <label>Full name</label>
-                                                <input id="full_name" type="text" class="form-control" placeholder="" ng-model="Employee.full_name">
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.full_name">
                                             </div>
                                         </div>
-<!--                                        <div class="col-sm-12">-->
-<!--                                            <div class="form-group form-group-default">-->
-<!--                                                <label>Images</label>-->
-<!--                                                <input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().filesChanged(this)" multiple>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                                        <div class="col-4">
+                                            <div class="form-group form-group-default">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group form-group-default">
+                                                <label>Phone</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group form-group-default">
+                                                <label>Object</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.object">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group form-group-default">
+                                                <label>Status</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.status">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Created</label>
+                                                <input type="date" ng-model="Employee.created">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Last_access</label>
+                                                <input type="date" ng-model="Employee.last_access">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Home_town</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.home_town">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Education</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.education">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Science</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.science">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>School</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.school">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Nick_skype</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.nick_skype">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Facebook_link</label>
+                                                <input type="text" class="form-control" placeholder="" ng-model="Employee.facebook_link">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Graduation_year</label>
+                                                <input type="date" ng-model="Employee.graduation_year">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group form-group-default">
+                                                <label>Activated</label>
+                                                <select ng-model="Employee.activated">
+                                                    <option value="false">False</option>
+                                                    <option value="true">True</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer no-bd">
                                         <button class="btn btn-primary" type="submit">Add</button>
@@ -165,32 +256,53 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Form Displays -->
-                <div class="zui-scroller">
+                <md-content scroll-glue-right>
+                <div class="zui-scroller" >
                     <table id="add-row" class="display table table-striped table-hover" >
                         <thead>
                         <tr>
+                            <th>+</th>
                             <th>Id</th>
                             <th>Full name</th>
-                            <th>Images</th>
-                            <th>Id_department</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Object</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Last_access</th>
+                            <th>Id department</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
+                            <th>+</th>
                             <th>Id</th>
                             <th>Full name</th>
-                            <th>Images</th>
-                            <th>Id_department</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Object</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Last_access</th>
+                            <th>Id department</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr dir-paginate="employees in Employees | itemsPerPage: 10 | filter:searchText">
+<!--                         filter:searchText-->
+                        <tr dir-paginate="employees in Employees | itemsPerPage: 10 track by $index">
+                            <td>{{$index}}</td>
                             <td>{{employees.id_employee}}</td>
                             <td>{{employees.full_name}}</td>
-                            <td>{{employees.images}}</td>
+                            <td>{{employees.email}}</td>
+                            <td>{{employees.phone}}</td>
+                            <td>{{employees.object}}</td>
+                            <td>{{employees.status}}</td>
+                            <td ng-bind="employees.created |date:'dd/MM/yyyy'"></td>
+                            <td ng-bind="employees.last_access |date:'dd/MM/yyyy'"></td>
                             <td>{{employees.id_department}}</td>
                             <td>
                                 <div class="form-button-action">
@@ -216,6 +328,7 @@
                     </table>
                     <dir-pagination-controls></dir-pagination-controls>
                 </div>
+                </md-content>
             </div>
         </div>
     </div>

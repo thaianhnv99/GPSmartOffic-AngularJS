@@ -52,7 +52,7 @@
                                                     <!--                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">-->
                                                     <!--                                                <i class="fa fa-edit"></i>-->
                                                     <!--                                            </button>-->
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" ng-click="DeleteEmployeeInDepartment(department.id_employee)">
+                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" ng-click="DeleteEmployeeInDepartment(department)">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 </div>
@@ -153,7 +153,7 @@
                                     <td>{{data.full_name}}</td>
                                     <td>
                                         <div class="form-button-action">
-                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" ng-click="AddEmployeeInDepartment(data.id_employee)">
+                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove" ng-click="AddEmployeeInDepartment(data)">
                                                 Add to Department
                                             </button>
                                         </div>

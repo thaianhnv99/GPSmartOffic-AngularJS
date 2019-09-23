@@ -1,7 +1,7 @@
-<div class="content" ng-controller="edittimesheetController">
+<div class="content" ng-controller="addtimesheetController">
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">TABLE USERS</h4>
+            <h4 class="page-title">TABLE TIMESHEET</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a ui-sref="login">
@@ -18,13 +18,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a ui-sref="tabletimesheet">Table Timesheets</a>
+                    <a ui-sref="membertimesheet">Table Timesheets</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a ui-sref="edittimesheet">Edit Timesheets</a>
+                    <a ui-sref="edittimesheet">Add Timesheets</a>
                 </li>
             </ul>
         </div>
@@ -33,76 +33,64 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Edit Timesheet</h4>
+                            <h4 class="card-title">Add Timesheet</h4>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form ng-submit="updateinfotimesheet()">
+                        <form ng-submit="addinfotimesheet()">
                             <div class="modal-body">
-                                <p class="small">UserName: {{editinfotimesheet.user_name}}</p>
+                                <p class="small">UserName: {{addtimesheetm.user_name}}</p>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group form-group-default">
                                             <label>Task</label>
                                             <input type="text" class="form-control"
-                                                   placeholder="..." ng-model="editinfotimesheet.task">
+                                                   placeholder="task" ng-model="addtimesheetm.task">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 pr-1">
+                                    <div class="col-md-6 pr-1">
                                         <div class="form-group form-group-default">
                                             <label>Start time</label>
                                             <div layout-gt-xs="row">
                                                 <div flex-gt-xs>
-                                                    <md-datepicker ng-model="editinfotimesheet.datetime"
+                                                    <md-datepicker ng-model="addtimesheetm.datetime"
                                                                    md-placeholder="Enter date"></md-datepicker>
                                                 </div>
                                                 <div>{{editinfotimesheet.datetime | date:shortDate}}</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 px-1">
+                                    <div class="col-md-6 pl-1">
                                         <div class="form-group form-group-default">
                                             <label>Result</label>
                                             <input type="text" class="form-control"
-                                                   placeholder="..." ng-model="editinfotimesheet.result">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 pl-1">
-                                        <div class="form-group form-group-default">
-                                            <label>Confirmed by</label>
-                                            <input type="text" class="form-control"
-                                                   placeholder="..." ng-model="editinfotimesheet.confirmed_by">
+                                                   placeholder="task" ng-model="addtimesheetm.result">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8 pr-1">
+                                    <div class="col-md-8">
                                         <div class="form-group form-group-default">
                                             <label>Notes</label>
                                             <input type="text" class="form-control"
-                                                   placeholder="..." ng-model="editinfotimesheet.notes">
+                                                   placeholder="task" ng-model="addtimesheetm.notes">
                                         </div>
                                     </div>
-                                    <div class="col-md-4 pl-1">
+                                    <div class="col-md-4">
                                         <div class="form-group form-group-default">
                                             <label>Status</label>
-                                            <md-select ng-model="editinfotimesheet.status" placeholder="..." class="md-no-underline"
+                                            <md-select ng-model="addtimesheetm.status" placeholder="..." class="md-no-underline"
                                                        style="width: 100%;">
                                                 <md-option value="Chua duyet">chưa duyệt</md-option>
-                                                <md-option value="Duyet">đã duyệt</md-option>
-                                                <md-option value="Khong hoan thanh">không hoàn thành</md-option>
-                                                <md-option value="Tu choi">từ chối</md-option>
                                             </md-select>
                                         </div>
                                     </div>
                                 </div>
-                                <div style="float: right;">
-                                    <button type="button" class="btn btn-secondary" ui-sref="tabletimesheet">Back</button>
-                                    <button type="submit"
-                                            class="btn btn-primary">Submit
-                                    </button>
+                                <div class="modal-footer no-bd">
+                                    <button class="btn btn-primary" type="submit">Add</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </form>
@@ -112,3 +100,4 @@
         </div>
     </div>
 </div>
+

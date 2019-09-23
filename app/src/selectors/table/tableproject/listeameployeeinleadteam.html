@@ -1,9 +1,20 @@
-<div ng-cloak ng-controller="TableleadteamController">
-    <md-content>
-        <md-tabs md-dynamic-height md-border-bottom>
-            <md-tab label="one">
-                <md-content class="md-padding">
-                    <h2>Danh sach nhan vien trong du an:</h2>
+<!--<script src="datatable.js"></script>-->
+<div class="content" ng-controller="TableleadteamController">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">List Employee</h4>
+                </div>
+            </div>
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <form ng-submit="SearchDepartment(dataDepartments)">
+                    <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search"
+                           aria-label="Search" ng-model="dataDepartments.name_department">
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
                     <table id="basic-datatables" class="display table table-striped table-hover">
                         <thead>
                         <tr>
@@ -20,15 +31,19 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr ng-repeat="listeamployee in employeebyidteam track by $index">
+                        <tr dir-paginate="listeamployee in employeebyidteam | itemsPerPage: 5 track by $index">
                             <td>{{$index + 1}}</td>
                             <td>{{listeamployee.id_employee}}</td>
                             <td>{{listeamployee.full_name}}</td>
                         </tr>
                         </tbody>
                     </table>
-                </md-content>
-            </md-tab>
-        </md-tabs>
-    </md-content>
+                    <dir-pagination-controls></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+</div>
+

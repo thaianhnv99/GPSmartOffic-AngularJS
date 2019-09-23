@@ -6,14 +6,15 @@
                     <h4 class="card-title">Add Row</h4>
                     <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#AddPermissons">
                         <i class="fa fa-plus"></i>
-                        Add Row
+                        Add Permissions
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Form Add Department -->
+
     <h1>History permissons of user</h1>
+    <!-- Form Add Permissons One User -->
     <div class="modal fade" id="AddPermissons" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -31,20 +32,21 @@
                 </div>
                 <div class="modal-body">
                     <p class="small">Create a new row using this form, make sure you fill them all</p>
-                    <form ng-submit="UpdateEmployee()">
+                    <form ng-submit="addPermission()">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group form-group-default">
-                                    <label>Date</label>
-                                    <input id="full_name" type="text" class="form-control" placeholder="" ng-model="dataEmployee.full_name">
-                                </div>
-                                <div class="form-group form-group-default">
                                     <label>Status</label>
-                                    <input id="full_name" type="text" class="form-control" placeholder="" ng-model="dataEmployee.full_name">
+                                    <select class="form-control" ng-model="dataPermission.status">
+                                        <option value="Xin nghỉ">Xin nghỉ</option>
+                                        <option value="Xin Vắng">Xin Vắng</option>
+                                        <option value="Xin đi muộn">Xin đi muộn</option>
+                                        <option value="Xin về sớm">Xin về sớm</option>
+                                    </select>
                                 </div>
                                 <div class="form-group form-group-default">
                                     <label>Reason</label>
-                                    <input id="full_name" type="text" class="form-control" placeholder="" ng-model="dataEmployee.full_name">
+                                    <input type="text" class="form-control" placeholder="" ng-model="dataPermission.reason">
                                 </div>
                             </div>
                         </div>
@@ -59,6 +61,60 @@
         </div>
     </div>
 
+    <!-- From Edit Permissons One User-->
+    <div class="modal fade" id="EditPermissions" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-bd">
+                    <h5 class="modal-title">
+														<span class="fw-mediumbold">
+														New</span>
+                        <span class="fw-light">
+															Row
+														</span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="small">Create a new row using this form, make sure you fill them all</p>
+                    <form ng-submit="EditPermission()" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Date</label>
+                                    <p ng-bind="dataPermissionById.date |date:'dd/MM/yyyy'"  ng-model="dataPermissionById.date"></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Status</label>
+                                    <select ng-model="dataPermissionById.status">
+                                        <option value="Xin nghỉ">Xin nghỉ</option>
+                                        <option value="Xin Vắng">Xin Vắng</option>
+                                        <option value="Xin đi muộn">Xin đi muộn</option>
+                                        <option value="Xin về sớm">Xin về sớm</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default">
+                                    <label>Reason</label>
+                                    <input id="id_employee" type="text" class="form-control" placeholder="" ng-model="dataPermissionById.reason">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer no-bd">
+                            <button class="btn btn-primary" type="submit">Edit</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div class="zui-scroller">
             <div class="container">
                 <div class="table-responsive">
@@ -84,12 +140,12 @@
                         <tbody>
                         <tr ng-repeat="data in dataPermissionAOneUser track by $index">
                             <td>{{$index+1}}</td>
-                            <td ng-bind="data.date | date:'dd/MM/yyyy'"></td>
+                            <td ng-bind="data.date | date:'dd/MM/yyyy HH:mm:ss'"></td>
                             <td>{{data.status}}</td>
                             <td>{{data.activated}}</td>
                             <td>
                                 <div class="form-button-action">
-                                    <button type="button" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal" ng-click="getListById(data.user_name)">
+                                    <button type="button" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" data-toggle="modal" data-target="#EditPermissions" ng-click="Getlistbyid(data)" ng-if="data.activated == false">
                                         <i class="fa fa-edit"></i>
                                     </button>
                                 </div>
@@ -100,9 +156,7 @@
                     <dir-pagination-controls></dir-pagination-controls>
                 </div>
             </div>
-            <div class="modal-footer no-bd">
-                <button class="btn btn-danger" data-dismiss="modal" ui-sref="tabledepartment">Back</button>
-            </div>
+
         <dir-pagination-controls></dir-pagination-controls>
     </div>
 </div>

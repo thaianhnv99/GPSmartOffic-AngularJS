@@ -13,6 +13,7 @@ angular.module('myApp')
                 getrolebyusername: getrolebyusername,
                 deleterolebyusername: deleterolebyusername,
                 updaterolebyusername: updaterolebyusername,
+                getquantity: getquantity,
                 registeruser: registeruser
             };
 
@@ -51,6 +52,10 @@ angular.module('myApp')
 
             function updaterolebyusername(username, idrole) {
                 return $http.post('http://localhost:8080/api/role/updaterolebyusername/' + username, idrole)
+            }
+
+            function getquantity() {
+                return $http.get('http://localhost:8080/api/getquantity')
             }
 
             function registeruser(user) {

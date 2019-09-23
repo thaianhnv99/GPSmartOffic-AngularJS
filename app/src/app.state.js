@@ -78,6 +78,18 @@ function stateConfig($stateProvider, $urlRouterProvider) {
         url: '/edittimesheet/:id',
         templateUrl: 'selectors/table/tabletimesheet/edittimesheet.html',
         controller: 'edittimesheetController'
+    }).state('membertimesheet', {
+        url: '/membertimesheet',
+        templateUrl: 'selectors/timesheet/timesheet.html',
+        controller: 'timesheetmemberController'
+    }).state('edittimesheetm', {
+        url: '/edittimesheetm/:id',
+        templateUrl: 'selectors/timesheet/edittimesheetm.html',
+        controller: 'edittimesheetmController'
+    }).state('addtimesheet', {
+        url: '/addtimesheet',
+        templateUrl: 'selectors/timesheet/addtimesheet.html',
+        controller: 'addtimesheetController'
     }).state('page-not-found', {
         url: '/page-not-found',
         templateUrl: 'selectors/page-not-found/page-not-found.html'
@@ -127,7 +139,7 @@ function stateConfig($stateProvider, $urlRouterProvider) {
         controller: 'TableleadteamController'
     }).state({
         name: 'leadteaminproject',
-        url: '/leadteaminproject/:id',
+        url: '/leadteaminproject/:idproject',
         templateUrl: 'selectors/table/tableproject/listleadteaminproject.html',
         controller: 'TableleadteamController'
     }).state({

@@ -1,5 +1,5 @@
 <!--<script src="datatable.js"></script>-->
-<div class="content">
+<div class="content" ng-controller="TableleadteamController">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
@@ -15,10 +15,6 @@
                 <form ng-submit="SearchDepartment(dataDepartments)">
                     <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search"
                            aria-label="Search" ng-model="dataDepartments.name_department">
-                    <div class="input-group-append">
-                        <span class="input-group-text amber lighten-3" id="basic-text1"><button type="submit"><i
-                                class="fas fa-search text-grey" aria-hidden="true"></i></button></span>
-                    </div>
                 </form>
             </div>
             <!--Form add -->
@@ -34,9 +30,9 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" ng-controller="TableprojectController">
+                        <div class="modal-body">
                             <p class="small">Create a new row using this form, make sure you fill them all</p>
-                            <form ng-submit="addteamlead()" >
+                            <form ng-submit="addTeamlead()">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
@@ -59,7 +55,6 @@
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -78,13 +73,13 @@
                         </div>
                         <div class="modal-body">
                             <p class="small">Create a new row using this form, make sure you fill them all</p>
-                            <form ng-submit="updProject(projectbyid)">
+                            <form ng-submit="updateTeamlead(leadteambyidteam)">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
                                             <label>Name Team</label>
                                             <input id="Id_department" type="text" class="form-control" placeholder=""
-                                                   ng-model="projectbyid.name_project">
+                                                   ng-model="leadteambyidteam.name_team">
                                         </div>
                                     </div>
                                 </div>
@@ -118,18 +113,18 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr ng-repeat="listteam in leadteam track by $index">
+                            <tr dir-paginate="listteam in leadteam | itemsPerPage: 5 track by $index">
                             <td>{{$index + 1}}</td>
                             <td>{{listteam.name_team}}</td>
                             <td>{{listteam.quantity}}</td>
                             <td>
                                 <button type="button" title="" class="btn btn-link btn-primary btn-lg"
                                         data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal"
-                                        ng-click="">
+                                        ng-click="getTeamleadbyidteam(listteam.id_team)">
                                     <i class="fa fa-edit"></i>
                                 </button>
                                 <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
-                                        data-original-title="Remove" ng-click="deleteteamlead(listteam.id_team)">
+                                        data-original-title="Remove" ng-click="deleteTeamlead(listteam.id_team)">
                                     <i class="fa fa-times"></i>
                                 </button>
                                 <button type="button" data-toggle="tooltip" title=""
@@ -142,6 +137,7 @@
                         </tr>
                         </tbody>
                     </table>
+                    <dir-pagination-controls></dir-pagination-controls>
                 </div>
             </div>
         </div>

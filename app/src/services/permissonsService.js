@@ -8,7 +8,8 @@ angular
                 Getlist: getlist,
                 Getlistbyid : getlistbyid,
                 UpdatePermission: updatePermission,
-                GetListPermissionAOneUser : getListPermissionAOneUser
+                GetListPermissionAOneUser : getListPermissionAOneUser,
+                AddPermissions : addPermissions
             };
 
             function getlist() {
@@ -16,8 +17,8 @@ angular
                 console.log("get list permissions");
             }
 
-            function getlistbyid(id) {
-                return $http.post('http://localhost:8080/apis/permissionsById', id);
+            function getlistbyid(object) {
+                return $http.post('http://localhost:8080/apis/permissionsById', object);
                 console.log("get list by id");
             }
             function updatePermission(object) {
@@ -27,6 +28,11 @@ angular
             function getListPermissionAOneUser(id) {
                 return $http.post('http://localhost:8080/apis/permissionsOneUser', id);
                 console.log("get List Permission One User");
+            }
+
+            function addPermissions(object) {
+                return $http.post('http://localhost:8080/apis/addPermissionsOfUser', object);
+                console.log("Add Permission One User");
             }
 
             return dataFactoryPermission;

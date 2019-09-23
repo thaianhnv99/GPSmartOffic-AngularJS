@@ -10,7 +10,7 @@ angular
                 DeleteEmployee :  deleteEmployee,
                 GetlistEmployeeById : getlistEmployeeById,
                 UpdateEmployee : updateEmployee,
-                Uploadimages : uploadimages
+                SearchEmployee : searchEmployee
             };
 
             function getlist() {
@@ -41,12 +41,9 @@ angular
                 return $http.put('http://localhost:8080/apis/updateEmployee', Employee);
             }
 
-            function uploadimages(formData) {
-                console.log(formData);
-                return $http.post('http://localhost:8080/apis/upload2', formData, {
-                    transformRequest: angular.identity,
-                    headers: {'Content-Type': undefined}
-                });
+            function searchEmployee(Employee) {
+                console.log("object can sua:", Employee);
+                return $http.post('http://localhost:8080/apis/SearchEmployee', Employee);
             }
 
             return dataFactoryEmployee;

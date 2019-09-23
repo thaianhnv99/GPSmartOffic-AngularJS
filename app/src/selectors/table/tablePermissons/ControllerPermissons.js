@@ -20,9 +20,9 @@ function PermissionsController ($scope, $http, dataFactoryPermission, $location,
                 });
     };
 
-    $scope.getListById = function (id) {
-        console.log("nhan id:" +id)
-        dataFactoryPermission.Getlistbyid(id)
+    $scope.getListById = function (data) {
+        console.log("nhan id:" +data)
+        dataFactoryPermission.Getlistbyid(data)
             .then(function (response) {
                     $scope.dataPermissionById = response.data;
                     console.log("data get list"+$scope.dataPermissionById);
@@ -34,7 +34,10 @@ function PermissionsController ($scope, $http, dataFactoryPermission, $location,
 
     $scope.updatePermission = function () {
         console.log("data update" + $scope.dataPermissionById.user_name);
-        dataFactoryPermission.UpdatePermission($scope.dataPermissionById);
+        dataFactoryPermission.UpdatePermission($scope.dataPermissionById).then(function success(){
+            $('#EditRowModal').modal('hide');
+            $scope.getListPermission();
+        })
     };
 }
 
