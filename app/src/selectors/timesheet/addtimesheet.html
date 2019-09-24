@@ -66,7 +66,7 @@
                                         <div class="form-group form-group-default">
                                             <label>Result</label>
                                             <input type="text" class="form-control"
-                                                   placeholder="task" ng-model="addtimesheetm.result">
+                                                   placeholder="result" ng-model="addtimesheetm.result">
                                         </div>
                                     </div>
                                 </div>
@@ -83,14 +83,14 @@
                                             <label>Status</label>
                                             <md-select ng-model="addtimesheetm.status" placeholder="..." class="md-no-underline"
                                                        style="width: 100%;">
-                                                <md-option value="Chua duyet">chưa duyệt</md-option>
+                                                <md-option value="Chua duyet">Send Task</md-option>
                                             </md-select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer no-bd">
+                                    <button class="btn btn-danger" ui-sref="membertimesheet">Back</button>
                                     <button class="btn btn-primary" type="submit">Add</button>
-                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </form>

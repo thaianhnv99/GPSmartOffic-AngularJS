@@ -293,7 +293,7 @@
                         </tfoot>
                         <tbody>
 <!--                         filter:searchText-->
-                        <tr dir-paginate="employees in Employees | itemsPerPage: 10 track by $index">
+                        <tr dir-paginate="employees in Employees | itemsPerPage: 1 track by $index">
                             <td>{{$index}}</td>
                             <td>{{employees.id_employee}}</td>
                             <td>{{employees.full_name}}</td>

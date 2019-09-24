@@ -15,7 +15,8 @@ function addtimesheetController($scope, $stateParams, dataTimesheetFactory, $sta
         console.log($scope.addtimesheetm);
         dataTimesheetFactory.addinfotimesheet($scope.addtimesheetm)
             .then(function success(response) {
-                alert("Them thnh cong")
+                alert("Them thanh cong");
+                $state.go('membertimesheet');
             }, function error(error) {
                 alert(error)
             })

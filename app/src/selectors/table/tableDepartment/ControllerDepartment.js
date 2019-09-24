@@ -43,23 +43,40 @@ angular
                     }
                 }
                 if (a == 1) {
-                    alert("ko add duoc bi trung id");
+                    alert("Bị trùng id hoặc bị trống");
                 } else if (a == 0) {
-                    dataFactory.AddDepartment($scope.Department).then(function () {
-                        $scope.getListDepartment();
-                    });
+                    dataFactory.AddDepartment($scope.Department).then(
+                        function () {
+                            alert("Add Thành công");
+                            $('#addRowModal').modal('hide');
+                            $scope.getListDepartment();
+
+                        },
+                        function (error) {
+                            alert("Add không thành công");
+                        });
                 }
 
             };
             $scope.UpdateDepartment = function () {
-                dataFactory.UpdateDepartment($scope.dataDepartments).then(function () {
-                    $scope.getListDepartment();
-                });
+                dataFactory.UpdateDepartment($scope.dataDepartments).then(
+                    function () {
+                        alert("Update Thành công")
+                        $scope.getListDepartment();
+                    },
+                    function (error) {
+                        alert("Update không thành công");
+                    });
             };
             $scope.DeleteDepartment = function ($Departmentd) {
-                dataFactory.DeleteDepartment($Departmentd).then(function () {
-                    $scope.getListDepartment();
-                });
+                dataFactory.DeleteDepartment($Departmentd).then(
+                    function () {
+                        alert("Xóa thành công");
+                        $scope.getListDepartment();
+                    },
+                    function (error) {
+                        alert("Xóa không thành công");
+                    });
             };
             $scope.SearchDepartment = function (dataDepartments) {
                 if (dataDepartments == null) {

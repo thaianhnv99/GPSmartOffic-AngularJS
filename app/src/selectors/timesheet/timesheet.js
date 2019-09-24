@@ -30,6 +30,7 @@ function timesheetmemberController($scope, dataTimesheetFactory, $filter, $local
         dataTimesheetFactory.getlistbydatetimem($localStorage.currentUser.users.user_name, $scope.startDate)
             .then(function success(response) {
                 $scope.timesheetm = response.data;
+                console.log($scope.timesheetm);
             }, function error(error) {
                 alert("error-" + error);
             })

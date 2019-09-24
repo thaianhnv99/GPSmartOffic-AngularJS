@@ -27,14 +27,14 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <h4 style="float: left;" class="card-title">Table Timesheet</h4>
                                 <button ui-sref="addtimesheet"
                                         style="margin: auto 21px;width: 105px;float: right;"
                                         type="button" class="btn btn-primary">Add
                                 </button>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group form-group-default">
                                     <div flex-gt-xs>
                                         <button ng-click="getlisttimesheetallm()"
@@ -78,7 +78,7 @@
                                     <td>{{t.result}}</td>
                                     <td><span class="badge badge-warning">{{t.status}}</span></td>
                                     <td style="text-align: center">{{t.confirmed_by}}</td>
-                                    <td>
+                                    <td style="text-align: center;">
                                         <div class="form-button-action"><a ng-if="t.status != 'Duyet'"
                                                 ui-sref="edittimesheetm({id: t.id_timesheet})">
                                             <button type="button" data-toggle="tooltip" title=""
@@ -87,7 +87,7 @@
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                         </a>
-                                            <button type="button" data-toggle="tooltip" title=""
+                                            <button ng-if="t.status != 'Duyet'" type="button" data-toggle="tooltip" title=""
                                                     class="btn btn-link btn-danger" data-original-title="Remove">
                                                 <i class="fa fa-times" ng-click="deletetimesheetm(t)"></i>
                                             </button>
@@ -108,4 +108,5 @@
             </div>
         </div>
     </div>
+    <div viewinfotimesheetm></div>
 </div>

@@ -30,7 +30,7 @@ function TableleadteamController($http, $scope, $mdDialog, dataTeamleadFactory, 
         if ($stateParams.idteam !== null && $stateParams.idteam !== undefined) {
             dataTeamleadFactory.getlistemployeebyidteamlead($stateParams.idteam)
                 .then(function (response) {
-                    $scope.employeebyidteam = response.data
+                    $scope.employeebyidteam = response.data;
                     console.log(response.data);
                 }, function (error) {
                     alert("error load data");
@@ -55,9 +55,12 @@ function TableleadteamController($http, $scope, $mdDialog, dataTeamleadFactory, 
             });
     };
     $scope.getlistemployeebyidteamlead = function () {
-        dataTeamleadFactory.getlistemployeebyidteamlead()
+        dataTeamleadFactory.getlistemployeebyidteamlead($stateParams.idteam)
             .then(function (response) {
                 $scope.employeebyidteam = response.data;
+                console.log(response.data);
+            }, function (error) {
+                alert("error load data");
             });
     };
     $scope.getTeamleadbyidteam = function (idteam) {
@@ -88,6 +91,7 @@ function TableleadteamController($http, $scope, $mdDialog, dataTeamleadFactory, 
             });
     };
     $scope.addTeamlead = function () {
+        console.log($scope.leadteamadd);
         dataTeamleadFactory.addteamlead($scope.leadteamadd)
             .then(function success(response) {
                 $scope.leadteamadd = response.data;
@@ -117,7 +121,9 @@ function TableleadteamController($http, $scope, $mdDialog, dataTeamleadFactory, 
         $scope.dataAddEmployeInTeam = employee;
         $scope.dataAddEmployeInTeam.id_team = $stateParams.idteam;
         dataTeamleadFactory.updatemployee($scope.dataAddEmployeInTeam)
-            .then($scope.getlistemployeebyidteamlead(), function success(response) {
+            .then(function success(response) {
+                $scope.getEmployeebyidteamisnull();
+                $scope.getlistemployeebyidteamlead();
                 alert("add employee successfully ");
             }, function (error) {
                 alert("error !!");
@@ -127,17 +133,17 @@ function TableleadteamController($http, $scope, $mdDialog, dataTeamleadFactory, 
         $scope.dataAddEmployeInTeam = employee;
         $scope.dataAddEmployeInTeam.id_team = null;
         dataTeamleadFactory.updatemployee($scope.dataAddEmployeInTeam)
-            .then($scope.getEmployeebyidteamisnull(), $scope.getlistemployeebyidteamlead());
+            .then( function succcess(response){
+                $scope.getlistemployeebyidteamlead();
+            });
     };
     $scope.updateteamlead = function (teamlead) {
         $scope.dataAddTeaminProject = teamlead;
         $scope.dataAddTeaminProject.id_project = $stateParams.idproject;
         console.log( $scope.dataAddTeaminProject);
-        dataTeamleadFactory.updateteamlead($scope.dataAddTeaminProject.id_project)
+        dataTeamleadFactory.updateteamlead($scope.dataAddTeaminProject)
             .then(function success(response) {
                 alert("add teamlead successfully");
-                $scope.getEmployeebyidteamisnull();
-                $scope.getlistemployeebyidteamlead();
             },function (error) {
                 alert("error");
             });

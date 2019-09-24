@@ -40,7 +40,7 @@ function TableprojecController($http, $scope, $mdDialog, dataProjectFactory) {
             .then(function success(response) {
                     $scope.projectadd = response.data;
                     $scope.projectadd.finderror === "OK" ? alert("Add thanh cong") : alert("ID bi trung");
-                    $scope.getlistproject();
+                    console.log( $scope.projectadd.finderror);
                 });
     };
     $scope.delproject = function (id) {
