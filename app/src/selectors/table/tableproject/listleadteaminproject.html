@@ -1,28 +1,81 @@
-<div ng-cloak ng-controller="TableleadteamController">
-    <md-content>
-        <md-tabs md-dynamic-height md-border-bottom>
-            <md-tab label="one">
-                <md-content class="md-padding">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <h4 class="card-title">Team</h4>
-                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#AddRowModal">
-                                <i class="fa fa-plus"></i>
-                                Add Row
+<!--<script src="datatable.js"></script>-->
+<div class="content" ng-controller="TableleadteamController">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">List Team</h4>
+                    <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#AddRowModal" ng-click="getlistteamleadbyidprojectisnull()">
+                        <i class="fa fa-plus"></i>
+                        Add Row
+                    </button>
+                </div>
+            </div>
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <form ng-submit="SearchDepartment(dataDepartments)">
+                    <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search"
+                           aria-label="Search" ng-model="dataDepartments.name_department">
+                </form>
+            </div>
+            <!--Form add -->
+            <div class="modal fade" id="AddRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header no-bd">
+                            <h5 class="modal-title">
+                                <span class="fw-mediumbold">New</span>
+                                <span class="fw-light">Row</span>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        <div class="modal-body" ng-controller="TableprojectController">
+                            <p class="small">Create a new row using this form, make sure you fill them all</p>
+                            <form ng-submit="updateEmployee()">
+                                <div class="row">
+                                    <table id="basic-datatables" class="display table table-striped table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>ID_Employee</th>
+                                            <th>full_name</th>
+                                            <th>action</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>ID_Employee</th>
+                                            <th>full_name</th>
+                                            <th>action</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        <tr ng-repeat="teamleadbyidprojectnull in teamleadbyidprojectisnull track by $index">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{teamleadbyidprojectnull.id_team}}</td>
+                                            <td>{{teamleadbyidprojectnull.name_team}}</td>
+                                            <td>
+                                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger"
+                                                        data-original-title="Remove" ng-click="updateteamlead(teamleadbyidprojectnull)">
+                                                    <i style="margin-top: 3px;" alt="" class="fa fa-plus"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="input-group md-form form-sm form-2 pl-0">
-                        <form ng-submit="SearchDepartment(dataDepartments)">
-                            <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search"
-                                   aria-label="Search" ng-model="dataDepartments.name_department">
-                            <div class="input-group-append">
-                        <span class="input-group-text amber lighten-3" id="basic-text1"><button type="submit"><i
-                                class="fas fa-search text-grey" aria-hidden="true"></i></button></span>
-                            </div>
-                        </form>
-                    </div>
-                    <h2>Danh sách team tham ra dự án:</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
                     <table id="basic-datatables" class="display table table-striped table-hover">
                         <thead>
                         <tr>
@@ -41,7 +94,7 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr ng-repeat="listteams in leadteambyidproject track by $index">
+                        <tr dir-paginate="listteams in leadteambyidproject | itemsPerPage: 5 track by $index">
                             <td>{{$index + 1}}</td>
                             <td>{{listteams.name_team}}</td>
                             <td>{{listteams.quantity}}</td>
@@ -60,8 +113,15 @@
                         </tr>
                         </tbody>
                     </table>
-                </md-content>
-            </md-tab>
-        </md-tabs>
-    </md-content>
+                    <dir-pagination-controls></dir-pagination-controls>
+                </div>
+                <div class="modal-footer no-bd">
+                    <button class="btn btn-danger" data-dismiss="modal" ui-sref="tableproject">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+</div>
+

@@ -1,7 +1,7 @@
 <div class="content" ng-controller="edituserprofileController">
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">MY USER</h4>
+            <h4 class="page-title">MY PROFILE</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a ui-sref="login">
@@ -83,8 +83,9 @@
                                         <div class="col-md-6 pr-1">
                                             <div class="form-group form-group-default">
                                                 <label>UserName</label>
-                                                <input type="text" class="form-control"
-                                                       placeholder="username" ng-value="infousereditprofile.user_name">
+                                                <label>{{infousereditprofile.user_name}}</label>
+<!--                                                <input type="text" class="form-control"-->
+<!--                                                       placeholder="username" ng-value="infousereditprofile.user_name">-->
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-1">
@@ -99,7 +100,7 @@
                                 </div>
                             </div>
                             <div style="float: right;">
-                                <button type="button" class="btn btn-secondary" ui-sref="user">Back</button>
+                                <button type="button" class="btn btn-secondary" ui-sref="dashboard">Back</button>
                                 <button type="submit"
                                         class="btn btn-primary">Submit
                                 </button>

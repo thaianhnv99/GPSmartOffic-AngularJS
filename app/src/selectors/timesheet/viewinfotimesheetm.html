@@ -12,12 +12,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p class="small">UserName: {{infotimesheet.user_name}}</p>
+                    <p class="small">UserName: {{infotimesheetm.user_name}}</p>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group form-group-default">
                                 <label>Task</label>
-                                <label class="form-control">{{infotimesheet.task}}</label>
+                                <label class="form-control">{{infotimesheetm.task}}</label>
                             </div>
                         </div>
                     </div>
@@ -25,19 +25,19 @@
                         <div class="col-md-4 pr-1">
                             <div class="form-group form-group-default">
                                 <label>Start time</label>
-                                <label class="form-control">{{infotimesheet.datetime}}</label>
+                                <label class="form-control">{{infotimesheetm.datetime | date:'MM/dd/yyyy'}}</label>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group form-group-default">
                                 <label>Result</label>
-                                <label class="form-control">{{infotimesheet.result}}</label>
+                                <label class="form-control">{{infotimesheetm.result}}</label>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group form-group-default">
                                 <label>Confirmed by</label>
-                                <label class="form-control">{{infotimesheet.confirmed_by}}</label>
+                                <label class="form-control">{{infotimesheetm.confirmed_by}}</label>
                             </div>
                         </div>
                     </div>
@@ -45,13 +45,13 @@
                         <div class="col-md-8">
                             <div class="form-group form-group-default">
                                 <label>Notes</label>
-                                <label class="form-control">{{infotimesheet.notes}}</label>
+                                <label class="form-control">{{infotimesheetm.notes}}</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group form-group-default">
                                 <label>Status</label>
-                                <label class="form-control">{{infotimesheet.status}}</label>
+                                <label class="form-control">{{infotimesheetm.status}}</label>
                             </div>
                         </div>
                     </div>

@@ -49,7 +49,7 @@ function edituserprofileController($scope, $stateParams, dataUserFactory, $timeo
                     fileReader.readAsDataURL(file);
                     fileReader.onload = function (e) {
                         $timeout(function () {
-                            $scope.displayimages = e.target.result;
+                            $scope.displayimagesprofile = e.target.result;
                         });
                     }
                 });

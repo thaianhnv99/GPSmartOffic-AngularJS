@@ -34,7 +34,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
                                                 <label>Date</label>
-                                                <input id="id_employee" type="text" class="form-control" placeholder=""  ng-model="dataPermissionById.date | date:'dd/MM/yyyy'">
+                                                <p ng-bind="dataPermissionById.date |date:'dd/MM/yyyy'"  ng-model="dataPermissionById.date"></p>
                                             </div>
                                         </div>
                                         <div class="col-sm-12">
@@ -100,7 +100,7 @@
                                         <td>{{data.activated}}</td>
                                         <td>
                                             <div class="form-button-action">
-                                                <button type="button" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal" ng-click="getListById(data.user_name)">
+                                                <button type="button" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" data-toggle="modal" data-target="#EditRowModal" ng-click="getListById(data)">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </div>

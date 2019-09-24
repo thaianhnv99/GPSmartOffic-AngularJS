@@ -11,13 +11,12 @@
                         </div>
                     </div>
                     <div class="input-group md-form form-sm form-2 pl-0">
-                        <form ng-submit="SearchDepartment(dataDepartments)">
-                            <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search" ng-model="dataDepartments.name_department">
-                            <div class="input-group-append">
-                                <span class="input-group-text amber lighten-3" id="basic-text1"><button type="submit"><i class="fas fa-search text-grey" aria-hidden="true"></i></button></span>
-                            </div>
-                        </form>
+                        <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search id" aria-label="Search" ng-change="SearchDepartment(dataDepartments)" ng-model="dataDepartments.id_department">
                     </div>
+                    <div class="input-group md-form form-sm form-2 pl-0">
+                        <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search name" aria-label="Search" ng-change="SearchDepartment(dataDepartments)" ng-model="dataDepartments.name_department">
+                    </div>
+
                     <div class="card-body">
                         <!-- Modal -->
                         <!--Form add -->
@@ -38,18 +37,18 @@
                                     </div>
                                     <div class="modal-body">
                                         <p class="small">Create a new row using this form, make sure you fill them all</p>
-                                        <form ng-submit="AddDepartment()">
+                                        <form ng-submit="AddDepartment(Department.id_department)">
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="form-group form-group-default">
-                                                        <label>Name</label>
-                                                        <input id="Id_department" type="text" class="form-control" placeholder="" ng-model="Department.id_department">
+                                                        <label>id_department</label>
+                                                        <input type="text" class="form-control" placeholder="" ng-model="Department.id_department">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="form-group form-group-default">
-                                                        <label>Position</label>
-                                                        <input id="Name_department" type="text" class="form-control" placeholder="" ng-model="Department.name_department">
+                                                        <label>name_department</label>
+                                                        <input type="text" class="form-control" placeholder="" ng-model="Department.name_department">
                                                     </div>
                                                 </div>
                                             </div>
@@ -87,13 +86,13 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group form-group-default">
                                                         <label>Name</label>
-                                                        <input id="Id_department" type="text" class="form-control" placeholder="" ng-model="dataDepartments.id_department">
+                                                        <input type="text" class="form-control" placeholder="" ng-model="dataDepartments.id_department">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="form-group form-group-default">
                                                         <label>Position</label>
-                                                        <input id="Name_department" type="text" class="form-control" placeholder="" ng-model="dataDepartments.name_department">
+                                                        <input type="text" class="form-control" placeholder="" ng-model="dataDepartments.name_department">
                                                     </div>
                                                 </div>
                                             </div>

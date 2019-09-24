@@ -4,8 +4,7 @@ angular.module('myApp')
     .config(['$provide', function ($provide) {
         $provide.factory('UploadFactory', ['$http', function ($http) {
             var UploadFactory = {
-                saveDoc: saveDoc,
-                geturlimage: geturlimage
+                saveDoc: saveDoc
             };
 
             function saveDoc(formData) {
@@ -14,10 +13,6 @@ angular.module('myApp')
                     headers: {'Content-Type': undefined}
                 });
             }
-            function geturlimage(filename) {
-                $http.get('http://localhost:8080/files/'+filename);
-            }
-
             return UploadFactory;
         }])
     }]);

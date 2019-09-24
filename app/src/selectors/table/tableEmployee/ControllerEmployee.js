@@ -2,8 +2,7 @@
 
 angular
     .module('myApp')
-    .controller('EmployeeController', EmployeeController)
-    .directive('uploadfile', uploadfile);
+    .controller('EmployeeController', EmployeeController);
     EmployeeController.$inject = ['$scope', '$http', 'dataFactoryEmployee', '$location', '$mdDialog', '$state', '$stateParams'];
 
     function EmployeeController ($scope, $http, dataFactoryEmployee, $location, $mdDialog, $state, $stateParams) {
@@ -27,12 +26,21 @@ angular
                         $scope.status = 'Unable to load customer data: ' + error.message;
                     });
         };
-        $scope.AddEmployee = function () {
-            console.log($scope.Employee);
-            dataFactoryEmployee.AddEmployee($scope.Employee).then(function () {
-                $scope.getListEmployee();
-            });
-            console.log("add thành công");
+        $scope.AddEmployee = function (EmployeeCheck) {
+            var a = 0;
+            for (var i = 0; i < $scope.Employees.length; i++) {
+                if (EmployeeCheck == $scope.Employees[i].id_employee) {
+                    a = 1;
+                }
+            }
+            if (a == 1) {
+                alert("ko add duoc bi trung id");
+            } else if (a == 0) {
+                dataFactoryEmployee.AddEmployee($scope.Employee).then(function () {
+                    $('#addRowModal').modal('hide');
+                    $scope.getListEmployee();
+                });
+            }
         };
         $scope.UpdateEmployee = function () {
             console.log("object update", $scope.dataEmployee);
@@ -47,13 +55,18 @@ angular
 
             console.log("xóa thành công");
         };
-        $scope.SearchEmployee = function (Employee) {
-            dataFactoryEmployee.SearchEmployee(Employee)
-                .then(function (response) {
-                    $scope.Departmentss = response.data;
-                    console.log($scope.Departmentss);
-                });
+        $scope.searchEmployee = function (dataEmployee) {
+            if(dataEmployee == null){
+                $scope.getListEmployee();
+            }else{
+                console.log(dataEmployee);
+                dataFactoryEmployee.SearchEmployee(dataEmployee)
+                    .then(function (response) {
+                        $scope.Employees = response.data;
+                    });
+            }
         };
+
         $scope.GetlistEmployeeById = function () {
             console.log("object can sua:", this.$stateParams.id);
             dataFactoryEmployee.GetlistEmployeeById($stateParams.id)
@@ -62,28 +75,4 @@ angular
                 });
         };
 
-        $scope.add = function(){
-            console.log($scope.selectUploadFile);
-            var formData = new FormData();
-            formData.append('file', $scope.selectUploadFile);
-            dataFactoryEmployee.Uploadimages(formData);
-        };
-
-    }
-
-    function uploadfile($parse) {
-        var directive = {
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-                var model = $parse(attrs.uploadfile);
-                var modelSetter = model.assign;
-
-                element.bind('change', function () {
-                    scope.$apply(function () {
-                        modelSetter(scope, element[0].files[0]);
-                    });
-                });
-            }
-        };
-        return directive;
     }

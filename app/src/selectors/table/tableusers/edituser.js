@@ -43,7 +43,6 @@ function edituserController($http, $scope, $stateParams, dataUserFactory, $timeo
                 console.log(response.data);
                 angular.forEach(response.data, function (value, key) {
                     $scope.roless.push(value.id_role);
-                    // console.log($scope.roless);
                 });
             }, function error(error) {
                 alert("Not OK");
@@ -90,7 +89,6 @@ function edituserController($http, $scope, $stateParams, dataUserFactory, $timeo
     };
     $scope.selectUploadFile = "";
     $scope.saveedituser = function () {
-        // console.log($scope.roless);
         var formData = new FormData();
         formData.append('file', $scope.selectUploadFile);
         UploadFactory.saveDoc(formData);
